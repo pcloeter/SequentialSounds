@@ -22,6 +22,7 @@ This project will also include:
 ### Wireframes
 
 SequentialSounds will render on a single page with a series of circular elements representing tones. These circles are either selected or unselected for playback in the sequence.  There will also be buttons/ selector options for altering playback based on the listed criteria.
+![wireframes](/assets/Wireframe.png)
 
 
 ### Architecture and Technologies
