@@ -23,7 +23,6 @@ This project will also include:
 
 SequentialSounds will render on a single page with a series of circular elements representing tones. These circles are either selected or unselected for playback in the sequence.  There will also be buttons/ selector options for altering playback based on the listed criteria.
 
-![wireframes](https://github.com/appacademy/ny-portfolio-curriculum/blob/master/javascript-project/js-proposal-wireframe.jpg)
 
 ### Architecture and Technologies
 
