@@ -1,30 +1,44 @@
 import Note from './note';
 
-class Sequencer {
+export default class Sequencer {
   constructor () {
     this.sequencer = [
-      this.makeRow("sound0"),
-      this.makeRow("sound1"),
-      this.makeRow("sound2"),
-      this.makeRow("sound3"),
-      this.makeRow("sound4"),
-      this.makeRow("sound5"),
-      this.makeRow("sound6"),
-      this.makeRow("sound7"),
+      this.makeRow("soundA"),
+      this.makeRow("soundB"),
+      this.makeRow("soundC"),
+      this.makeRow("soundD"),
+      this.makeRow("soundE"),
+      this.makeRow("soundF"),
+      this.makeRow("soundG"),
+      this.makeRow("soundH"),
     ]
     // this.measuresLength = document.getElementById('measures-length');
     
   }
 
+
+
   makeRow(sound) {
     let notes = [];
+    let row = document.createElement('div')
+    row.setAttribute("class", `row-${sound}`)
+
     for (let i = 0; i < 16; i++) {
-      notes.push(new Note(false, i, sound))
+      let note = document.createElement('div');
+      note.setAttribute("class", `sound-${sound} pos-${i} selected-false` );
+      note.innerHTML = i;
+      notes.push(note);
+      row.appendChild(note);
     }
+    let container = document.querySelector('.sequencer');
+    container.appendChild(row)
     return notes
   }
 
-  
-  resetSequencer()
+
+
+  resetSequencer() {
+
+  }
 
 }

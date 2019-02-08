@@ -1,0 +1,64 @@
+#main {
+  background-blend-mode: color-burn;
+  background-color: black;
+  color: white;
+  height: 100%;
+  width:
+}
+
+[class *="sound-"] {
+  margin: 3px;
+  height: 30px;
+  width: 30px;
+  border-radius: 20px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  justify-content: center;
+}
+
+[class *="row-"] {
+  display: flex;
+  flex-direction: row;
+  background-color: black;
+  justify-content: center;
+  color: white;
+}
+
+.sound-soundA {
+  border: 6px solid orange;
+}
+
+.sound-soundB {
+  border: 6px solid red;
+}
+
+.sound-soundC {
+  border: 6px solid purple;
+}
+
+.sound-soundD {
+  border: 6px solid indigo;
+}
+
+.sound-soundE {
+  border: 6px solid blue;
+}
+
+.sound-soundF {
+  border: 6px solid aquamarine;
+}
+
+.sound-soundG {
+  border: 6px solid green;
+}
+
+.sound-soundH {
+  border: 6px solid yellow;
+}
