@@ -11,9 +11,10 @@
 }
 
 .main-title {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Monoton;
   font-size: 48px;
-  text-shadow: 3px 3px gray
+  /* text-shadow: 3px 3px gray; */
+  font-weight: 20;
 }
 .sequencer {
   width: 100%;
