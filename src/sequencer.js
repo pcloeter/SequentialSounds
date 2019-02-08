@@ -25,7 +25,7 @@ export default class Sequencer {
 
     for (let i = 0; i < 16; i++) {
       let note = document.createElement('div');
-      note.setAttribute("class", `sound-${sound} pos-${i} selected-false` );
+      note.setAttribute("class", `sound-${sound} pos-${i} selected-false hvr-pulse-shrink` );
       note.innerHTML = i;
       notes.push(note);
       row.appendChild(note);
