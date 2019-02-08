@@ -2,8 +2,34 @@
   background-blend-mode: color-burn;
   background-color: black;
   color: white;
-  height: 100%;
-  width:
+  height: 550px;
+  width: auto;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-title {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 48px;
+  text-shadow: 3px 3px gray
+}
+.sequencer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  justify-content: center;
+}
+
+
+[class *="row-"] {
+  display: flex;
+  flex-direction: row;
+  background-color: black;
+  justify-content: center;
+  color: white;
 }
 
 [class *="sound-"] {
@@ -13,22 +39,7 @@
   border-radius: 20px;
   text-align: center;
   vertical-align: middle;
-}
-
-.container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  background-color: black;
-  justify-content: center;
-}
-
-[class *="row-"] {
-  display: flex;
-  flex-direction: row;
-  background-color: black;
-  justify-content: center;
-  color: white;
+  font-size: 10px;
 }
 
 .sound-soundA {
