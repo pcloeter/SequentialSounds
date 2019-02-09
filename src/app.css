@@ -37,10 +37,10 @@
   margin: 3px;
   height: 30px;
   width: 30px;
-  border-radius: 20px;
+  border-radius: 30px;
   text-align: center;
   vertical-align: middle;
-  font-size: 10px;
+  /* font-size: 10px; */
 }
 
 @-webkit-keyframes hvr-pulse-shrink {
@@ -80,33 +80,37 @@
 } */
 
 .sound-soundA {
-  border: 6px solid orange;
+  border: 10px solid rgb(255, 145, 0);
 }
 
 .sound-soundB {
-  border: 6px solid red;
+  border: 10px solid red;
 }
 
 .sound-soundC {
-  border: 6px solid purple;
+  border: 10px solid purple;
 }
 
 .sound-soundD {
-  border: 6px solid indigo;
+  border: 10px solid indigo;
 }
 
 .sound-soundE {
-  border: 6px solid blue;
+  border: 10px solid blue;
 }
 
 .sound-soundF {
-  border: 6px solid aquamarine;
+  border: 10px solid rgb(2, 224, 194);
 }
 
 .sound-soundG {
-  border: 6px solid green;
+  border: 10px solid rgb(0, 255, 0);
 }
 
 .sound-soundH {
-  border: 6px solid yellow;
+  border: 10px solid yellow;
+}
+
+[data-selected="true"] {
+  background-color: white;
 }

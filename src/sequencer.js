@@ -29,22 +29,33 @@ export default class Sequencer {
       row.appendChild(note);
     }
 
-    let container = document.querySelector('.sequencer');
-    container.appendChild(row)
+    document.querySelector('.sequencer').appendChild(row);
     return notes
   }
 
   makeNote (sound, pos) {
+    let noteScene = document.createElement('div');
+      noteScene.setAttribute('class', "noteScene");
+    let noteContainer = document.createElement('div');
+      noteContainer.setAttribute('class', "noteContainer");
+    let noteSelected = document.createElement('div');
+      noteSelected.setAttribute('class', "noteSelected");
+
+    
     let note = document.createElement('div');
     note.setAttribute("class", `sound-${sound} pos-${pos} hvr-pulse-shrink` );
-    note.innerHTML = pos;
+    // note.innerHTML = pos;
     note.setAttribute("data-selected", 'false');
 
     note.addEventListener('click', ()  => {
       this.toggleSelect(note);
     });
 
-    return note;
+    noteContainer.appendChild(note);
+    noteContainer.appendChild(noteSelected);
+    noteScene.appendChild(noteContainer);
+
+    return noteScene;
 
   }
     
