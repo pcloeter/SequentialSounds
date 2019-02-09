@@ -1,7 +1,8 @@
-// export default class Note {
-//   constructor (value, pos, id) {
-//     this.value = value,
-//     this.pos = pos,
-//     this.id = id
-//   }
-// };
+export default class Note {
+  constructor (htmlElement, sound, pos, selected) {
+    this.htmlElement = htmlElement,
+    this.sound = sound,
+    this.pos = pos,
+    this.selected = false
+  }
+};

@@ -24,18 +24,41 @@ export default class Sequencer {
     row.setAttribute("class", `row-${sound}`)
 
     for (let i = 0; i < 16; i++) {
-      let note = document.createElement('div');
-      note.setAttribute("class", `sound-${sound} pos-${i} selected-false hvr-pulse-shrink` );
-      note.innerHTML = i;
+      let note = this.makeNote(sound, i);
       notes.push(note);
       row.appendChild(note);
     }
+
     let container = document.querySelector('.sequencer');
     container.appendChild(row)
     return notes
   }
 
+  makeNote (sound, pos) {
+    let note = document.createElement('div');
+    note.setAttribute("class", `sound-${sound} pos-${pos} hvr-pulse-shrink` );
+    note.innerHTML = pos;
+    note.setAttribute("data-selected", 'false');
 
+    note.addEventListener = ('click', ()  => {
+      this.toggleSelect();
+    });
+
+    return note;
+
+  }
+    
+
+
+  toggleSelect () {
+    let selected = this.getAttribute('data-selected');
+
+    if (selected === "true") {
+      this.attr('data-selected', 'false')
+    } else {
+      this.attr('data-selected', 'true')
+    }
+  };
 
   resetSequencer() {
 
