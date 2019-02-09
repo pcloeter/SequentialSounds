@@ -34,17 +34,17 @@ export default class Sequencer {
   }
 
   makeNote (sound, pos) {
-    let noteScene = document.createElement('div');
-      noteScene.setAttribute('class', "noteScene");
     let noteContainer = document.createElement('div');
-      noteContainer.setAttribute('class', "noteContainer");
-    let noteSelected = document.createElement('div');
-      noteSelected.setAttribute('class', "noteSelected");
-
+      noteContainer.setAttribute('class', "note");
     
     let note = document.createElement('div');
-    note.setAttribute("class", `sound-${sound} pos-${pos} hvr-pulse-shrink` );
-    // note.innerHTML = pos;
+    note.setAttribute("class", `
+      note-face-front 
+      sound-${sound} 
+      pos-${pos} 
+      pulse-shrink
+      ` 
+      );
     note.setAttribute("data-selected", 'false');
 
     note.addEventListener('click', ()  => {
@@ -52,10 +52,8 @@ export default class Sequencer {
     });
 
     noteContainer.appendChild(note);
-    noteContainer.appendChild(noteSelected);
-    noteScene.appendChild(noteContainer);
 
-    return noteScene;
+    return noteContainer;
 
   }
     
