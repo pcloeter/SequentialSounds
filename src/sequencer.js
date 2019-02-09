@@ -40,8 +40,8 @@ export default class Sequencer {
     note.innerHTML = pos;
     note.setAttribute("data-selected", 'false');
 
-    note.addEventListener = ('click', ()  => {
-      this.toggleSelect();
+    note.addEventListener('click', ()  => {
+      this.toggleSelect(note);
     });
 
     return note;
@@ -50,13 +50,13 @@ export default class Sequencer {
     
 
 
-  toggleSelect () {
-    let selected = this.getAttribute('data-selected');
-
+  toggleSelect (note) {
+    let selected = note.getAttribute('data-selected');
+    
     if (selected === "true") {
-      this.attr('data-selected', 'false')
+      note.setAttribute("data-selected", 'false');
     } else {
-      this.attr('data-selected', 'true')
+      note.setAttribute("data-selected", 'true');
     }
   };
 
