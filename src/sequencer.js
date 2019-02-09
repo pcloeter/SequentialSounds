@@ -1,6 +1,6 @@
 import Note from './note';
 
-export default class Sequencer {
+class Sequencer {
   constructor () {
     this.sequencer = [
       this.makeRow("soundA"),
@@ -69,8 +69,11 @@ export default class Sequencer {
     }
   };
 
-  resetSequencer() {
-
+resetSequencer() {
+    new Sequencer();
   }
 
 }
+
+export default Sequencer;
+

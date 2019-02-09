@@ -44,14 +44,14 @@
 
 @-webkit-keyframes pulse-shrink {
   to {
-    -webkit-transform: scale(0.9);
-    transform: scale(0.9);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
   }
 }
 @keyframes pulse-shrink {
   to {
-    -webkit-transform: scale(0.9);
-    transform: scale(0.9);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
   }
 }
 [data-selected="true"] {
