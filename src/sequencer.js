@@ -30,7 +30,6 @@ class Sequencer {
   }
 
   startPlayback () {
-    debugger
     this.playButton.addEventListener("click", (e) => {
       this.sequence.start();
     })
