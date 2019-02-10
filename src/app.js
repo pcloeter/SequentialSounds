@@ -1,5 +1,6 @@
-import Sequencer from './sequencer.js';
+import Structure from './structure.js';
+import Tone from 'tone';
 
 document.addEventListener("DOMContentLoaded", ()  => {
-  new Sequencer();
+  new Structure();
 });

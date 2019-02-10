@@ -1,13 +1,13 @@
-import Sequencer from './sequencer';
+import Structure from './structure';
 
 class Pattern {
   constructor() {
-    this.sounds = sequencer.voices
+    this.sounds = structure.voices
   }
 
-  findRowPattern (sound) {
+  findRowPattern (rowSound) {
     let attacks = [];
-    notes = document.querySelectorAll(`sound-${sound}`);
+    notes = document.querySelectorAll(`sound-${rowSound}`);
     notes.forEach(note => {
       if (note.getAttribute("data-selected") === "true") {
         attacks.push(true);
@@ -18,7 +18,7 @@ class Pattern {
     return attacks;
   }
 
-  
+
 
 }
 export default Pattern;
