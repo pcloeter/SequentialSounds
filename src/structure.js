@@ -1,5 +1,3 @@
-import Note from './note';
-
 class Structure{
   constructor () {
     this.sounds = [
@@ -61,6 +59,20 @@ class Structure{
       note.setAttribute("data-selected", 'true');
     }
   };
+
+
+  findRowPattern (rowSound) {
+    let attacks = [];
+    notes = document.querySelectorAll(`sound-${rowSound}`);
+    notes.forEach(note => {
+      if (note.getAttribute("data-selected") === "true") {
+        attacks.push(true);
+      } else {
+        attacks.push(false);
+      }
+    });
+    return attacks;
+  }
 
   resetSequencer() {
     new Structure();
