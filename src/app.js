@@ -1,6 +1,10 @@
 import Structure from './structure.js';
 import Tone from 'tone';
+import Sequencer from './sequencer';
 
 document.addEventListener("DOMContentLoaded", ()  => {
-  new Structure();
+  const structure = new Structure();
+
+  const sequencer = new Sequencer(structure);
+  sequencer.startPlayback();
 });
