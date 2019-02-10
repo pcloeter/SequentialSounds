@@ -64,16 +64,16 @@ class Structure{
   };
 
 
-  findSequencerPattern (soundRows) {
+  soundRowsPlayback (soundRows) {
     for (let i = 0; i < soundRows.length; i++) {
-      return findRowPattern(sound`${i}`);
+      return rowPlayback(`${i}`);
     }
   }
 
 
-  findRowPattern (soundNumber) {
+  rowPlayback (soundNumber) {
     let attacks = [];
-    notes = document.querySelectorAll(`sound-${soundNumber}`);
+    notes = document.querySelectorAll(`sound-sound${soundNumber}`);
     notes.forEach(note => {
       if (note.getAttribute("data-selected") === "true") {
         attacks.push(true);
