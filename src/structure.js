@@ -1,14 +1,14 @@
 class Structure{
   constructor () {
     this.soundRows = [
-      this.makeRow("soundA"),
-      this.makeRow("soundB"),
-      this.makeRow("soundC"),
-      this.makeRow("soundD"),
-      this.makeRow("soundE"),
-      this.makeRow("soundF"),
-      this.makeRow("soundG"),
-      this.makeRow("soundH"),
+      this.makeRow("sound0"),
+      this.makeRow("sound1"),
+      this.makeRow("sound2"),
+      this.makeRow("sound3"),
+      this.makeRow("sound4"),
+      this.makeRow("sound5"),
+      this.makeRow("sound6"),
+      this.makeRow("sound7"),
     ]
     // this.measuresLength = document.getElementById('measures-length');
     
@@ -62,6 +62,13 @@ class Structure{
       note.setAttribute("data-selected", 'true');
     }
   };
+
+
+  findSequencerPattern (soundRows) {
+    for (let i = 0; i < soundRows.length; i++) {
+      return findRowPattern(soundRows[i]);
+    }
+  }
 
 
   findRowPattern (rowSound) {
