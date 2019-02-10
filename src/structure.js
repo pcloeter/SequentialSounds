@@ -1,6 +1,6 @@
 class Structure{
   constructor () {
-    this.sounds = [
+    this.soundRows = [
       this.makeRow("soundA"),
       this.makeRow("soundB"),
       this.makeRow("soundC"),
@@ -16,15 +16,18 @@ class Structure{
 
 
   makeRow(sound) {
+    let notes = [];
     let row = document.createElement('div')
     row.setAttribute("class", `row-${sound}`)
 
     for (let i = 0; i < 16; i++) {
       let note = this.makeNote(sound, i);
       row.appendChild(note);
+      notes.push(note);
     }
 
     document.querySelector('.sequencer').appendChild(row);
+  
   }
 
 
@@ -71,7 +74,7 @@ class Structure{
         attacks.push(false);
       }
     });
-    return attacks;
+    return {rowSound, attacks};
   }
 
   resetSequencer() {
