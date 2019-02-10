@@ -2,7 +2,7 @@ import Note from './note';
 
 class Sequencer {
   constructor () {
-    this.sequencer = [
+    this.sounds = [
       this.makeRow("soundA"),
       this.makeRow("soundB"),
       this.makeRow("soundC"),
@@ -17,47 +17,40 @@ class Sequencer {
   }
 
 
-
   makeRow(sound) {
-    let notes = [];
     let row = document.createElement('div')
     row.setAttribute("class", `row-${sound}`)
 
     for (let i = 0; i < 16; i++) {
       let note = this.makeNote(sound, i);
-      notes.push(note);
       row.appendChild(note);
     }
 
     document.querySelector('.sequencer').appendChild(row);
-    return notes
   }
+
 
   makeNote (sound, pos) {
     let noteContainer = document.createElement('div');
       noteContainer.setAttribute('class', "note");
     
     let note = document.createElement('div');
-    note.setAttribute("class", `
-      note-face-front 
-      sound-${sound} 
-      pos-${pos} 
-      pulse-shrink
-      ` 
-      );
-    note.setAttribute("data-selected", 'false');
+      note.setAttribute("class", `
+        note-face-front 
+        sound-${sound} 
+        pos-${pos} 
+        pulse-shrink
+        `);
 
-    note.addEventListener('click', ()  => {
-      this.toggleSelect(note);
-    });
+      note.setAttribute("data-selected", 'false');
+      note.addEventListener('click', ()  => {
+        this.toggleSelect(note);
+      });
 
-    noteContainer.appendChild(note);
-
+      noteContainer.appendChild(note);
     return noteContainer;
-
   }
     
-
 
   toggleSelect (note) {
     let selected = note.getAttribute('data-selected');
@@ -69,7 +62,7 @@ class Sequencer {
     }
   };
 
-resetSequencer() {
+  resetSequencer() {
     new Sequencer();
   }
 
