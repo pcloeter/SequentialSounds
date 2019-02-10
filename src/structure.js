@@ -66,14 +66,14 @@ class Structure{
 
   findSequencerPattern (soundRows) {
     for (let i = 0; i < soundRows.length; i++) {
-      return findRowPattern(soundRows[i]);
+      return findRowPattern(sound`${i}`);
     }
   }
 
 
-  findRowPattern (rowSound) {
+  findRowPattern (soundNumber) {
     let attacks = [];
-    notes = document.querySelectorAll(`sound-${rowSound}`);
+    notes = document.querySelectorAll(`sound-${soundNumber}`);
     notes.forEach(note => {
       if (note.getAttribute("data-selected") === "true") {
         attacks.push(true);
@@ -81,7 +81,7 @@ class Structure{
         attacks.push(false);
       }
     });
-    return {rowSound, attacks};
+    return {soundNumber, attacks};
   }
 
   resetSequencer() {
