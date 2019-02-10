@@ -70,7 +70,7 @@
   animation-iteration-count: infinite;
   -webkit-animation-direction: alternate;
   animation-direction: alternate;
-  background-color: white;
+  background-image: radial-gradient(white, rgb(248, 248, 153));
 }
 
 
