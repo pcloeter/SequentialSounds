@@ -73,13 +73,14 @@ class Structure{
 
   rowPlayback (soundNumber) {
     let attacks = [];
-    notes = document.querySelectorAll(`sound-sound${soundNumber}`);
+    let notes = document.querySelectorAll(`.sound-sound${soundNumber}`);
     notes.forEach(note => {
       if (note.getAttribute("data-selected") === "true") {
         attacks.push(true);
       } else {
         attacks.push(false);
       }
+      debugger
     });
     return {soundNumber, attacks};
   }

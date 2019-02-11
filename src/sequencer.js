@@ -7,33 +7,39 @@ class Sequencer {
     this.instrument = new Tone.PluckSynth().toMaster();
     this.oldSoundRows = structure.soundRows;
     this.newSoundRows = structure.soundRowsPlayback;
+
     this.interval = () => {
       let array = [];
       for (let i = 0; i < this.newSoundRows.length; i++) {
         array.push(i);
       }
       return array;
-    }
+    };
 
     this.sequence = new Tone.Sequence((pos) => {
-  
       for (let i = 0; i < this.newSoundRows.length; i++) {
         let attack = this.newSoundRows[i].attacks[pos];
     
-        if (attack === true) {
+        if (attack) {
           this.instrument.triggerAttackRelease(keys[i], "4n")
         }
       }
+      debugger
     }, this.interval, "4n");
+
     Tone.Transport.start();
     this.playButton = document.getElementById("play-button");
-  }
+  };
 
+  
   startPlayback () {
     this.playButton.addEventListener("click", (e) => {
-      this.sequence.start();
+      Tone.context.resume().then( () => {
+        this.sequence.start();
+        debugger
+      })
     })
-  }
+  };
 
 
 }

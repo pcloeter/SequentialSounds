@@ -114,14 +114,17 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _structure_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./structure.js */ "./src/structure.js");
-/* harmony import */ var _sequencer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sequencer */ "./src/sequencer.js");
- // import Tone from 'tone';
+/* harmony import */ var tone__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tone */ "./node_modules/tone/build/Tone.js");
+/* harmony import */ var tone__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(tone__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _sequencer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sequencer */ "./src/sequencer.js");
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
   var structure = new _structure_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
-  var sequencer = new _sequencer__WEBPACK_IMPORTED_MODULE_1__["default"](structure);
+  var sequencer = new _sequencer__WEBPACK_IMPORTED_MODULE_2__["default"](structure);
   sequencer.startPlayback();
+  window.rowPlayback = structure.rowPlayback;
 });
 
 /***/ }),
@@ -174,10 +177,12 @@ function () {
       for (var i = 0; i < _this.newSoundRows.length; i++) {
         var attack = _this.newSoundRows[i].attacks[pos];
 
-        if (attack === true) {
+        if (attack) {
           _this.instrument.triggerAttackRelease(keys[i], "4n");
         }
       }
+
+      debugger;
     }, this.interval, "4n");
     tone__WEBPACK_IMPORTED_MODULE_1___default.a.Transport.start();
     this.playButton = document.getElementById("play-button");
@@ -189,7 +194,11 @@ function () {
       var _this2 = this;
 
       this.playButton.addEventListener("click", function (e) {
-        _this2.sequence.start();
+        tone__WEBPACK_IMPORTED_MODULE_1___default.a.context.resume().then(function () {
+          _this2.sequence.start();
+
+          debugger;
+        });
       });
     }
   }]);
@@ -278,13 +287,15 @@ function () {
     key: "rowPlayback",
     value: function rowPlayback(soundNumber) {
       var attacks = [];
-      notes = document.querySelectorAll("sound-sound".concat(soundNumber));
+      var notes = document.querySelectorAll(".sound-sound".concat(soundNumber));
       notes.forEach(function (note) {
         if (note.getAttribute("data-selected") === "true") {
           attacks.push(true);
         } else {
           attacks.push(false);
         }
+
+        debugger;
       });
       return {
         soundNumber: soundNumber,
