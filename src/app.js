@@ -1,5 +1,5 @@
 import Structure from './structure.js';
-import Tone from 'tone';
+import * as Tone from 'tone';
 import Sequencer from './sequencer';
 
 document.addEventListener("DOMContentLoaded", ()  => {

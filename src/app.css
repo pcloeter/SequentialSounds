@@ -1,3 +1,11 @@
+
+button {
+  height: 30px;
+  margin: 0px 20px 20px 20px ;
+  box-shadow: 1px 1px 8px #a19655;
+  font-weight: 700;
+}
+
 #main {
   background-blend-mode: color-burn;
   background-color: black;
@@ -15,6 +23,8 @@
   font-size: 48px;
   /* text-shadow: 3px 3px gray; */
   font-weight: 20;
+  margin-bottom: 20px;
+  text-shadow: 6px 6px 8px #a19655;
 }
 .sequencer {
   width: 100%;

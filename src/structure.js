@@ -1,3 +1,5 @@
+import Tone from 'tone';
+
 class Structure{
   constructor () {
     this.soundRows = [
@@ -11,7 +13,7 @@ class Structure{
       this.makeRow("sound7"),
     ]
     // this.measuresLength = document.getElementById('measures-length');
-    
+    this.tone = new Tone();
   }
 
 
@@ -46,6 +48,7 @@ class Structure{
       note.setAttribute("data-selected", 'false');
       note.addEventListener('click', ()  => {
         this.toggleSelect(note);
+        this.tone.context.resume();
       });
 
       noteContainer.appendChild(note);

@@ -8,16 +8,17 @@ class Sequencer {
     this.oldSoundRows = structure.soundRows;
     this.newSoundRows = structure.soundRowsPlayback;
 
+
     this.interval = () => {
       let array = [];
-      for (let i = 0; i < this.newSoundRows.length; i++) {
+      for (let i = 0; i < this.oldSoundRows.length; i++) {
         array.push(i);
       }
       return array;
     };
 
     this.sequence = new Tone.Sequence((pos) => {
-      for (let i = 0; i < this.newSoundRows.length; i++) {
+      for (let i = 0; i < this.oldSoundRows.length; i++) {
         let attack = this.newSoundRows[i].attacks[pos];
     
         if (attack) {
@@ -39,6 +40,8 @@ class Sequencer {
     })
   };
 
+
+  
 
 }
 

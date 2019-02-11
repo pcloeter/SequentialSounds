@@ -168,7 +168,7 @@ function () {
     this.interval = function () {
       var array = [];
 
-      for (var i = 0; i < _this.newSoundRows.length; i++) {
+      for (var i = 0; i < _this.oldSoundRows.length; i++) {
         array.push(i);
       }
 
@@ -176,7 +176,7 @@ function () {
     };
 
     this.sequence = new tone__WEBPACK_IMPORTED_MODULE_1___default.a.Sequence(function (pos) {
-      for (var i = 0; i < _this.newSoundRows.length; i++) {
+      for (var i = 0; i < _this.oldSoundRows.length; i++) {
         var attack = _this.newSoundRows[i].attacks[pos];
 
         if (attack) {
@@ -217,11 +217,15 @@ function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var tone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tone */ "./node_modules/tone/build/Tone.js");
+/* harmony import */ var tone__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tone__WEBPACK_IMPORTED_MODULE_0__);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
 
 var Structure =
 /*#__PURE__*/
@@ -230,6 +234,8 @@ function () {
     _classCallCheck(this, Structure);
 
     this.soundRows = [this.makeRow("sound0"), this.makeRow("sound1"), this.makeRow("sound2"), this.makeRow("sound3"), this.makeRow("sound4"), this.makeRow("sound5"), this.makeRow("sound6"), this.makeRow("sound7")]; // this.measuresLength = document.getElementById('measures-length');
+
+    this.tone = new tone__WEBPACK_IMPORTED_MODULE_0___default.a();
   }
 
   _createClass(Structure, [{
@@ -259,6 +265,8 @@ function () {
       note.setAttribute("data-selected", 'false');
       note.addEventListener('click', function () {
         _this.toggleSelect(note);
+
+        _this.tone.context.resume();
       });
       noteContainer.appendChild(note);
       return noteContainer;
