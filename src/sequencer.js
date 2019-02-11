@@ -24,19 +24,17 @@ class Sequencer {
           this.instrument.triggerAttackRelease(keys[i], "4n")
         }
       }
-      debugger
     }, this.interval, "4n");
 
     Tone.Transport.start();
     this.playButton = document.getElementById("play-button");
   };
 
-  
+
   startPlayback () {
     this.playButton.addEventListener("click", (e) => {
       Tone.context.resume().then( () => {
         this.sequence.start();
-        debugger
       })
     })
   };

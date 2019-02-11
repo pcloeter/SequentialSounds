@@ -65,9 +65,11 @@ class Structure{
 
 
   soundRowsPlayback (soundRows) {
+    let array = [];
     for (let i = 0; i < soundRows.length; i++) {
-      return rowPlayback(`${i}`);
+      array.push(rowPlayback(`${i}`));
     }
+    return array;
   }
 
 
@@ -80,7 +82,6 @@ class Structure{
       } else {
         attacks.push(false);
       }
-      debugger
     });
     return {soundNumber, attacks};
   }

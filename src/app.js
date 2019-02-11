@@ -8,4 +8,6 @@ document.addEventListener("DOMContentLoaded", ()  => {
   sequencer.startPlayback();
 
   window.rowPlayback = structure.rowPlayback;
+  window.soundRowsPlayback = structure.soundRowsPlayback;
+  window.soundRows = structure.soundRows;
 });

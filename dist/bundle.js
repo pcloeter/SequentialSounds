@@ -125,6 +125,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var sequencer = new _sequencer__WEBPACK_IMPORTED_MODULE_2__["default"](structure);
   sequencer.startPlayback();
   window.rowPlayback = structure.rowPlayback;
+  window.soundRowsPlayback = structure.soundRowsPlayback;
+  window.soundRows = structure.soundRows;
 });
 
 /***/ }),
@@ -181,8 +183,6 @@ function () {
           _this.instrument.triggerAttackRelease(keys[i], "4n");
         }
       }
-
-      debugger;
     }, this.interval, "4n");
     tone__WEBPACK_IMPORTED_MODULE_1___default.a.Transport.start();
     this.playButton = document.getElementById("play-button");
@@ -196,8 +196,6 @@ function () {
       this.playButton.addEventListener("click", function (e) {
         tone__WEBPACK_IMPORTED_MODULE_1___default.a.context.resume().then(function () {
           _this2.sequence.start();
-
-          debugger;
         });
       });
     }
@@ -279,9 +277,13 @@ function () {
   }, {
     key: "soundRowsPlayback",
     value: function soundRowsPlayback(soundRows) {
+      var array = [];
+
       for (var i = 0; i < soundRows.length; i++) {
-        return rowPlayback("".concat(i));
+        array.push(rowPlayback("".concat(i)));
       }
+
+      return array;
     }
   }, {
     key: "rowPlayback",
@@ -294,8 +296,6 @@ function () {
         } else {
           attacks.push(false);
         }
-
-        debugger;
       });
       return {
         soundNumber: soundNumber,
