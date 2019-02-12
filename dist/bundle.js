@@ -123,53 +123,34 @@ __webpack_require__.r(__webpack_exports__);
 document.addEventListener("DOMContentLoaded", function () {
   var structure = new _structure_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
   var sequencer = new _sequencer__WEBPACK_IMPORTED_MODULE_2__["default"](structure);
-  window.soundRows = structure.soundRows;
-  window.rowPlayback = structure.rowPlayback;
-  window.soundRowsPlayback = structure.soundRowsPlayback;
-  var demo = [{
-    soundNumber: 0,
-    attacks: [false, true, false, true, false, false, false, false, false, false, false, false, false, false, false, false]
-  }, {
-    soundNumber: 1,
-    attacks: [false, false, false, false, false, true, false, false, false, false, false, false, false, true, false, false]
-  }, {
-    soundNumber: 2,
-    attacks: [false, false, false, false, false, false, true, false, false, false, false, false, false, true, false, false]
-  }, {
-    soundNumber: 3,
-    attacks: [false, false, false, false, false, false, false, true, false, false, false, false, false, true, false, false]
-  }, {
-    soundNumber: 4,
-    attacks: [false, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false]
-  }, {
-    soundNumber: 5,
-    attacks: [false, false, false, false, false, false, false, false, false, true, false, false, false, false, false, false]
-  }, {
-    soundNumber: 6,
-    attacks: [false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false]
-  }, {
-    soundNumber: 7,
-    attacks: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
-  }];
-  var synth = new tone__WEBPACK_IMPORTED_MODULE_1___default.a.PolySynth(8, tone__WEBPACK_IMPORTED_MODULE_1___default.a.Synth).toMaster();
-  window.addEventListener("click", function () {
-    // let array = [false, true, true, true, false, false, true, false];
-    var keys = ['D3', "F4", "A5", "C4", "E4", "G4", "B4", "D5"]; // const seq = new Tone.Sequence((time, note) => {
-    //   synth.triggerAttackRelease(note, '8n', time)
-    // }, ['C5', 'C4', 'C3', 'C2'], '4n')
-
-    var seq = new tone__WEBPACK_IMPORTED_MODULE_1___default.a.Sequence(function (time, pos) {
-      for (var i = 0; i < soundRows.length; i++) {
-        var attack = demo[i].attacks[pos];
-
-        if (attack) {
-          synth.triggerAttackRelease(keys[i], "2n");
-        }
-      }
-    }, [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15], "2n");
-    tone__WEBPACK_IMPORTED_MODULE_1___default.a.Transport.start();
-    seq.start();
-  });
+  sequencer.controlPlayback(); // window.startPlayback = sequencer.startPlayback;
+  // window.soundRows = structure.soundRows;
+  // window.rowPlayback = structure.rowPlayback;
+  // window.soundRowsPlayback = structure.soundRowsPlayback;
+  // const demo = [
+  //   {soundNumber: 0, attacks: [false, true, false, true, false, false, false, false, false, false, false, false, false, false, false, false] },
+  //   {soundNumber: 1, attacks: [false, false, false, false, false, true, false, false, false, false, false, false, false, true, false, false] },
+  //   {soundNumber: 2, attacks: [false, false, false, false, false, false, true, false, false, false, false, false, false, true, false, false] },
+  //   {soundNumber: 3, attacks: [false, false, false, false, false, false, false, true, false, false, false, false, false, true, false, false] },
+  //   {soundNumber: 4, attacks: [false, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false] },
+  //   {soundNumber: 5, attacks: [false, false, false, false, false, false, false, false, false, true, false, false, false, false, false, false] },
+  //   {soundNumber: 6, attacks: [false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false] },
+  //   {soundNumber: 7, attacks: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false] }
+  // ];
+  // const synth = new Tone.PolySynth(8, Tone.Synth).toMaster();
+  // window.addEventListener("click", () => {
+  // let keys = ['D3', "F4", "A5", "C4", "E4", "G4", "B4", "D5"];
+  //   let seq = new Tone.Sequence( (time, pos) => {
+  //     for (let i = 0; i < soundRows.length; i++) {
+  //       let attack = demo[i].attacks[pos];
+  //       if (attack) {
+  //         synth.triggerAttackRelease(keys[i], "4n")
+  //       }
+  //     }
+  //   }, [0,1,2,3,4,5,6,8,9,10,11,12,13,14,15], "4n");
+  //     Tone.Transport.start();
+  //     seq.start();
+  //   })
 });
 
 /***/ }),
@@ -183,15 +164,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _structure__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./structure */ "./src/structure.js");
-/* harmony import */ var tone__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tone */ "./node_modules/tone/build/Tone.js");
-/* harmony import */ var tone__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(tone__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var tone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tone */ "./node_modules/tone/build/Tone.js");
+/* harmony import */ var tone__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tone__WEBPACK_IMPORTED_MODULE_0__);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
 
 
 
@@ -203,43 +182,74 @@ function () {
 
     _classCallCheck(this, Sequencer);
 
-    this.keys = ['D4', "F4", "A4", "C5", "E5", "G5", "B5", "D6"];
-    this.instrument = new tone__WEBPACK_IMPORTED_MODULE_1___default.a.Synth().toMaster();
+    this.keys = ['D3', "F4", "A4", "C4", "E4", "G4", "B4", "D5"];
+    this.instrument = new tone__WEBPACK_IMPORTED_MODULE_0___default.a.PolySynth(8, tone__WEBPACK_IMPORTED_MODULE_0___default.a.Synth).toMaster();
     this.oldSoundRows = structure.soundRows;
     this.newSoundRows = structure.soundRowsPlayback;
+    this.rowPlayback = structure.rowPlayback;
+    this.playButton = document.getElementById("play-button");
+    this.controlPlayback = this.controlPlayback.bind(this);
+    this.demo = [{
+      soundNumber: 0,
+      attacks: [false, true, false, true, false, false, false, false, false, false, false, false, false, false, false, false]
+    }, {
+      soundNumber: 1,
+      attacks: [false, false, false, false, false, true, false, false, false, false, false, false, false, true, false, false]
+    }, {
+      soundNumber: 2,
+      attacks: [false, false, false, false, false, false, true, false, false, false, false, false, false, true, false, false]
+    }, {
+      soundNumber: 3,
+      attacks: [false, false, false, false, false, false, false, true, false, false, false, false, false, true, false, false]
+    }, {
+      soundNumber: 4,
+      attacks: [false, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false]
+    }, {
+      soundNumber: 5,
+      attacks: [false, false, false, false, false, false, false, false, false, true, false, false, false, false, false, false]
+    }, {
+      soundNumber: 6,
+      attacks: [false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false]
+    }, {
+      soundNumber: 7,
+      attacks: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+    }];
 
     this.interval = function () {
       var array = [];
 
-      for (var i = 0; i < _this.oldSoundRows.length; i++) {
+      for (var i = 0; i < _this.oldSoundRows[0].length; i++) {
         array.push(i);
       }
 
       return array;
     };
 
-    this.sequence = new tone__WEBPACK_IMPORTED_MODULE_1___default.a.Sequence(function (pos) {
+    this.sequence = new tone__WEBPACK_IMPORTED_MODULE_0___default.a.Sequence(function (time, pos) {
       for (var i = 0; i < _this.oldSoundRows.length; i++) {
-        var attack = _this.newSoundRows[i].attacks[pos];
+        var attack = _this.newSoundRows(_this.oldSoundRows, _this.rowPlayback)[i].attacks[pos];
 
         if (attack) {
           _this.instrument.triggerAttackRelease(_this.keys[i], "4n");
         }
       }
-    }, this.interval, "4n");
-    tone__WEBPACK_IMPORTED_MODULE_1___default.a.Transport.start();
-    this.playButton = document.getElementById("play-button");
+    }, this.interval(), "4n");
+    debugger;
+    tone__WEBPACK_IMPORTED_MODULE_0___default.a.Transport.start();
   }
 
   _createClass(Sequencer, [{
-    key: "startPlayback",
-    value: function startPlayback() {
-      var _this2 = this;
-
+    key: "controlPlayback",
+    value: function controlPlayback() {
+      var that = this;
       this.playButton.addEventListener("click", function (e) {
-        tone__WEBPACK_IMPORTED_MODULE_1___default.a.context.resume().then(function () {
-          _this2.sequence.start();
-        });
+        if (that.sequence.state === 'stopped') {
+          that.sequence.start();
+        } else {
+          that.sequence.stop();
+        }
+
+        debugger;
       });
     }
   }]);
@@ -320,7 +330,7 @@ function () {
     }
   }, {
     key: "soundRowsPlayback",
-    value: function soundRowsPlayback(soundRows) {
+    value: function soundRowsPlayback(soundRows, rowPlayback) {
       var array = [];
 
       for (var i = 0; i < soundRows.length; i++) {

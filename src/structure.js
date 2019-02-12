@@ -63,7 +63,7 @@ class Structure{
   };
 
 
-  soundRowsPlayback (soundRows) {
+  soundRowsPlayback (soundRows, rowPlayback) {
     let array = [];
     for (let i = 0; i < soundRows.length; i++) {
       array.push(rowPlayback(`${i}`));
