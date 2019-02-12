@@ -4,7 +4,7 @@ import Tone from 'tone';
 class Sequencer {
   constructor(structure) {
     this.keys = ['D4', "F4", "A4", "C5", "E5", "G5", "B5", "D6"];
-    this.instrument = new Tone.PluckSynth().toMaster();
+    this.instrument = new Tone.Synth().toMaster();
     this.oldSoundRows = structure.soundRows;
     this.newSoundRows = structure.soundRowsPlayback;
 
@@ -22,7 +22,7 @@ class Sequencer {
         let attack = this.newSoundRows[i].attacks[pos];
     
         if (attack) {
-          this.instrument.triggerAttackRelease(keys[i], "4n")
+          this.instrument.triggerAttackRelease(this.keys[i], "4n")
         }
       }
     }, this.interval, "4n");

@@ -123,10 +123,53 @@ __webpack_require__.r(__webpack_exports__);
 document.addEventListener("DOMContentLoaded", function () {
   var structure = new _structure_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
   var sequencer = new _sequencer__WEBPACK_IMPORTED_MODULE_2__["default"](structure);
-  sequencer.startPlayback();
+  window.soundRows = structure.soundRows;
   window.rowPlayback = structure.rowPlayback;
   window.soundRowsPlayback = structure.soundRowsPlayback;
-  window.soundRows = structure.soundRows;
+  var demo = [{
+    soundNumber: 0,
+    attacks: [false, true, false, true, false, false, false, false, false, false, false, false, false, false, false, false]
+  }, {
+    soundNumber: 1,
+    attacks: [false, false, false, false, false, true, false, false, false, false, false, false, false, true, false, false]
+  }, {
+    soundNumber: 2,
+    attacks: [false, false, false, false, false, false, true, false, false, false, false, false, false, true, false, false]
+  }, {
+    soundNumber: 3,
+    attacks: [false, false, false, false, false, false, false, true, false, false, false, false, false, true, false, false]
+  }, {
+    soundNumber: 4,
+    attacks: [false, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false]
+  }, {
+    soundNumber: 5,
+    attacks: [false, false, false, false, false, false, false, false, false, true, false, false, false, false, false, false]
+  }, {
+    soundNumber: 6,
+    attacks: [false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false]
+  }, {
+    soundNumber: 7,
+    attacks: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+  }];
+  var synth = new tone__WEBPACK_IMPORTED_MODULE_1___default.a.PolySynth(8, tone__WEBPACK_IMPORTED_MODULE_1___default.a.Synth).toMaster();
+  window.addEventListener("click", function () {
+    // let array = [false, true, true, true, false, false, true, false];
+    var keys = ['D3', "F4", "A5", "C4", "E4", "G4", "B4", "D5"]; // const seq = new Tone.Sequence((time, note) => {
+    //   synth.triggerAttackRelease(note, '8n', time)
+    // }, ['C5', 'C4', 'C3', 'C2'], '4n')
+
+    var seq = new tone__WEBPACK_IMPORTED_MODULE_1___default.a.Sequence(function (time, pos) {
+      for (var i = 0; i < soundRows.length; i++) {
+        var attack = demo[i].attacks[pos];
+
+        if (attack) {
+          synth.triggerAttackRelease(keys[i], "2n");
+        }
+      }
+    }, [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15], "2n");
+    tone__WEBPACK_IMPORTED_MODULE_1___default.a.Transport.start();
+    seq.start();
+  });
 });
 
 /***/ }),
@@ -161,7 +204,7 @@ function () {
     _classCallCheck(this, Sequencer);
 
     this.keys = ['D4', "F4", "A4", "C5", "E5", "G5", "B5", "D6"];
-    this.instrument = new tone__WEBPACK_IMPORTED_MODULE_1___default.a.PluckSynth().toMaster();
+    this.instrument = new tone__WEBPACK_IMPORTED_MODULE_1___default.a.Synth().toMaster();
     this.oldSoundRows = structure.soundRows;
     this.newSoundRows = structure.soundRowsPlayback;
 
@@ -180,7 +223,7 @@ function () {
         var attack = _this.newSoundRows[i].attacks[pos];
 
         if (attack) {
-          _this.instrument.triggerAttackRelease(keys[i], "4n");
+          _this.instrument.triggerAttackRelease(_this.keys[i], "4n");
         }
       }
     }, this.interval, "4n");
@@ -217,15 +260,11 @@ function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var tone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tone */ "./node_modules/tone/build/Tone.js");
-/* harmony import */ var tone__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tone__WEBPACK_IMPORTED_MODULE_0__);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-
 
 var Structure =
 /*#__PURE__*/
@@ -234,8 +273,6 @@ function () {
     _classCallCheck(this, Structure);
 
     this.soundRows = [this.makeRow("sound0"), this.makeRow("sound1"), this.makeRow("sound2"), this.makeRow("sound3"), this.makeRow("sound4"), this.makeRow("sound5"), this.makeRow("sound6"), this.makeRow("sound7")]; // this.measuresLength = document.getElementById('measures-length');
-
-    this.tone = new tone__WEBPACK_IMPORTED_MODULE_0___default.a();
   }
 
   _createClass(Structure, [{
@@ -252,6 +289,7 @@ function () {
       }
 
       document.querySelector('.sequencer').appendChild(row);
+      return notes;
     }
   }, {
     key: "makeNote",
@@ -265,8 +303,6 @@ function () {
       note.setAttribute("data-selected", 'false');
       note.addEventListener('click', function () {
         _this.toggleSelect(note);
-
-        _this.tone.context.resume();
       });
       noteContainer.appendChild(note);
       return noteContainer;
