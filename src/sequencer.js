@@ -39,7 +39,6 @@ class Sequencer {
         }
       }
     }, this.interval(), "4n");
-    debugger
     Tone.Transport.start();
   };
   
@@ -51,7 +50,6 @@ class Sequencer {
       } else {
         that.sequence.stop();
       }
-      debugger
     }
   )};
   

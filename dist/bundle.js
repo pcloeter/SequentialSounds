@@ -234,7 +234,6 @@ function () {
         }
       }
     }, this.interval(), "4n");
-    debugger;
     tone__WEBPACK_IMPORTED_MODULE_0___default.a.Transport.start();
   }
 
@@ -248,8 +247,6 @@ function () {
         } else {
           that.sequence.stop();
         }
-
-        debugger;
       });
     }
   }]);
