@@ -1,5 +1,5 @@
 import Structure from './structure.js';
-import * as Tone from 'tone';
+import Tone from 'tone';
 import Sequencer from './sequencer';
 
 // const structure = new Structure();
@@ -11,7 +11,11 @@ import Sequencer from './sequencer';
 // window.soundRows = structure.soundRows;
 document.addEventListener("DOMContentLoaded", ()  => {
   
-  var synth = new Tone.Synth().toMaster();
-  synth.triggerAttackRelease('E4', '8n')
+  const synth = new Tone.Synth().toMaster();
+
+  window.addEventListener("click", () => {
+    synth.triggerAttackRelease('E4', '8n')
+
+  })
   
 });
