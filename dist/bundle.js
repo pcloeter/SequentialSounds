@@ -182,7 +182,7 @@ function () {
 
     _classCallCheck(this, Sequencer);
 
-    this.keys = ['D3', "F4", "A4", "C4", "E4", "G4", "B4", "D5"];
+    this.keys = ['D3', "F3", "A3", "C4", "E4", "G4", "B4", "D5"];
     this.instrument = new tone__WEBPACK_IMPORTED_MODULE_0___default.a.PolySynth(8, tone__WEBPACK_IMPORTED_MODULE_0___default.a.Synth).toMaster();
     this.oldSoundRows = structure.soundRows;
     this.newSoundRows = structure.soundRowsPlayback;
@@ -243,7 +243,7 @@ function () {
       var that = this;
       this.playButton.addEventListener("click", function (e) {
         if (that.sequence.state === 'stopped') {
-          that.sequence.start();
+          that.sequence.start(1);
         } else {
           that.sequence.stop();
         }

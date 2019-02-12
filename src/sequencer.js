@@ -2,7 +2,7 @@ import Tone from 'tone';
 
 class Sequencer {
   constructor(structure) {
-    this.keys = ['D3', "F4", "A4", "C4", "E4", "G4", "B4", "D5"];
+    this.keys = ['D3', "F3", "A3", "C4", "E4", "G4", "B4", "D5"];
     this.instrument = new Tone.PolySynth(8, Tone.Synth).toMaster();
     this.oldSoundRows = structure.soundRows;
     this.newSoundRows = structure.soundRowsPlayback;
@@ -46,7 +46,7 @@ class Sequencer {
     const that = this;
     this.playButton.addEventListener("click", (e) => {
       if (that.sequence.state === 'stopped') {
-        that.sequence.start(); 
+        that.sequence.start(1); 
       } else {
         that.sequence.stop();
       }
