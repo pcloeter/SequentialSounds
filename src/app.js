@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", ()  => {
   const structure = new Structure();
   const sequencer = new Sequencer(structure);
   sequencer.controlPlayback();
+  sequencer.resetSequencer();
 
   // window.startPlayback = sequencer.startPlayback;
   // window.soundRows = structure.soundRows;

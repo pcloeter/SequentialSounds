@@ -7,8 +7,11 @@ class Sequencer {
     this.oldSoundRows = structure.soundRows;
     this.newSoundRows = structure.soundRowsPlayback;
     this.rowPlayback = structure.rowPlayback;
+    this.resetButton = document.getElementById("reset-button");
     this.playButton = document.getElementById("play-button");
     this.controlPlayback = this.controlPlayback.bind(this);
+    this.resetSequencer = this.resetSequencer.bind(this);
+
     
     this.demo = [
       {soundNumber: 0, attacks: [false, true, false, true, false, false, false, false, false, false, false, false, false, false, false, false] },
@@ -40,6 +43,14 @@ class Sequencer {
       }
     }, this.interval(), "4n");
     Tone.Transport.start();
+  };
+  
+  resetSequencer () {
+    this.resetButton.addEventListener("click", () => {
+      document.querySelectorAll('[data-selected="true"]').forEach( note => {
+        note.setAttribute("data-selected", 'false');
+      })
+    })
   };
   
   controlPlayback() {

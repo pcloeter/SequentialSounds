@@ -123,7 +123,8 @@ __webpack_require__.r(__webpack_exports__);
 document.addEventListener("DOMContentLoaded", function () {
   var structure = new _structure_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
   var sequencer = new _sequencer__WEBPACK_IMPORTED_MODULE_2__["default"](structure);
-  sequencer.controlPlayback(); // window.startPlayback = sequencer.startPlayback;
+  sequencer.controlPlayback();
+  sequencer.resetSequencer(); // window.startPlayback = sequencer.startPlayback;
   // window.soundRows = structure.soundRows;
   // window.rowPlayback = structure.rowPlayback;
   // window.soundRowsPlayback = structure.soundRowsPlayback;
@@ -187,8 +188,10 @@ function () {
     this.oldSoundRows = structure.soundRows;
     this.newSoundRows = structure.soundRowsPlayback;
     this.rowPlayback = structure.rowPlayback;
+    this.resetButton = document.getElementById("reset-button");
     this.playButton = document.getElementById("play-button");
     this.controlPlayback = this.controlPlayback.bind(this);
+    this.resetSequencer = this.resetSequencer.bind(this);
     this.demo = [{
       soundNumber: 0,
       attacks: [false, true, false, true, false, false, false, false, false, false, false, false, false, false, false, false]
@@ -238,6 +241,15 @@ function () {
   }
 
   _createClass(Sequencer, [{
+    key: "resetSequencer",
+    value: function resetSequencer() {
+      this.resetButton.addEventListener("click", function () {
+        document.querySelectorAll('[data-selected="true"]').forEach(function (note) {
+          note.setAttribute("data-selected", 'false');
+        });
+      });
+    }
+  }, {
     key: "controlPlayback",
     value: function controlPlayback() {
       var that = this;
@@ -352,11 +364,6 @@ function () {
         soundNumber: soundNumber,
         attacks: attacks
       };
-    }
-  }, {
-    key: "resetSequencer",
-    value: function resetSequencer() {
-      new Structure();
     }
   }]);
 

@@ -85,10 +85,6 @@ class Structure{
     return {soundNumber, attacks};
   }
 
-  resetSequencer() {
-    new Structure();
-  }
-
 }
 
 export default Structure;
