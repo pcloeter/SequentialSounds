@@ -43,7 +43,7 @@ class Sequencer {
         }
       }
     }, this.interval(), "4n");
-    // Tone.Transport.start();
+    Tone.Transport.start();
   };
   
   resetSequencer () {

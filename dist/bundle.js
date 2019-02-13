@@ -238,7 +238,8 @@ function () {
           _this.instrument.triggerAttackRelease(_this.keys[i], "4n");
         }
       }
-    }, this.interval(), "4n"); // Tone.Transport.start();
+    }, this.interval(), "4n");
+    tone__WEBPACK_IMPORTED_MODULE_0___default.a.Transport.start();
   }
 
   _createClass(Sequencer, [{
