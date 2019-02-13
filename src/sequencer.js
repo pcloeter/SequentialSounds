@@ -35,7 +35,8 @@ class Sequencer {
     
     this.sequence = new Tone.Sequence((time, pos) => {
       for (let i = 0; i < this.oldSoundRows.length; i++) {
-        let attack = this.newSoundRows(this.oldSoundRows, this.rowPlayback)[i].attacks[pos];
+        let row = this.newSoundRows(this.oldSoundRows, this.rowPlayback)[i];
+        let attack = row.attacks[pos];
         
         if (attack) {
           this.instrument.triggerAttackRelease((this.keys[i]), "4n")

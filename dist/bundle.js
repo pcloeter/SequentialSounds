@@ -230,7 +230,9 @@ function () {
 
     this.sequence = new tone__WEBPACK_IMPORTED_MODULE_0___default.a.Sequence(function (time, pos) {
       for (var i = 0; i < _this.oldSoundRows.length; i++) {
-        var attack = _this.newSoundRows(_this.oldSoundRows, _this.rowPlayback)[i].attacks[pos];
+        var row = _this.newSoundRows(_this.oldSoundRows, _this.rowPlayback)[i];
+
+        var attack = row.attacks[pos];
 
         if (attack) {
           _this.instrument.triggerAttackRelease(_this.keys[i], "4n");
