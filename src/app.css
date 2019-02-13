@@ -1,3 +1,18 @@
+html {
+  min-height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+body {
+  margin: 0px;
+  height: 100%;
+  background-color: black;
+  display: flex;
+}
 
 button {
   height: 30px;
@@ -23,7 +38,7 @@ button {
   font-size: 48px;
   /* text-shadow: 3px 3px gray; */
   font-weight: 20;
-  margin-bottom: 20px;
+  margin: 20px;
   text-shadow: 6px 6px 8px #a19655;
 }
 .sequencer {
