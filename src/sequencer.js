@@ -1,4 +1,5 @@
 import Tone from 'tone';
+import { notDeepEqual } from 'assert';
 
 class Sequencer {
   constructor(structure) {
@@ -37,9 +38,17 @@ class Sequencer {
       for (let i = 0; i < this.oldSoundRows.length; i++) {
         let row = this.newSoundRows(this.oldSoundRows, this.rowPlayback)[i];
         let attack = row.attacks[pos];
-        
+
         if (attack) {
+          document.querySelectorAll(`.pos-${pos}`).forEach(note => {
+            note.setAttribute("data-playing", "true");
+          });
           this.instrument.triggerAttackRelease((this.keys[i]), "4n")
+          setTimeout( () => {
+            document.querySelectorAll(`.pos-${pos}`).forEach(note => {
+            note.removeAttribute("data-playing");
+          });
+        }, 100);
         }
       }
     }, this.interval(), "4n");
@@ -64,10 +73,6 @@ class Sequencer {
         that.sequence.start('+.01'); 
       } else {
         that.sequence.stop();
-        // document.querySelectorAll('[data-selected="true"]').forEach( note => {
-        //   note.setAttribute("data-selected", 'false');
-        // })
-
       }
     }
   )};

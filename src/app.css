@@ -134,12 +134,15 @@ button {
 .note [data-selected="false"]:hover{
   transform: rotateY(180deg);
   margin: 3px;
+}
 
+.note [data-playing="true"] {
+  background-image: radial-gradient(black, black,black);
 }
 
 .note [data-selected="false"]{
   position: relative;
-  transition: transform 1s;
+  transition: transform .75s;
   transform-style: preserve-3d;
   margin: 3px;
 }
