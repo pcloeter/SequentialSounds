@@ -61,7 +61,7 @@ class Sequencer {
         Tone.context.resume();
       } 
       if (that.sequence.state === 'stopped') {
-        that.sequence.start(1); 
+        that.sequence.start("1"); 
       } else {
         that.sequence.stop();
       }
