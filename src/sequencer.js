@@ -61,9 +61,13 @@ class Sequencer {
         Tone.context.resume();
       } 
       if (that.sequence.state === 'stopped') {
-        that.sequence.start("1"); 
+        that.sequence.start('+.01'); 
       } else {
         that.sequence.stop();
+        // document.querySelectorAll('[data-selected="true"]').forEach( note => {
+        //   note.setAttribute("data-selected", 'false');
+        // })
+
       }
     }
   )};
