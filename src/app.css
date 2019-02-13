@@ -142,7 +142,7 @@ button {
 
 .note [data-selected="false"]{
   position: relative;
-  transition: transform .75s;
+  transition: transform 2s;
   transform-style: preserve-3d;
   margin: 3px;
 }
