@@ -57,6 +57,9 @@ class Sequencer {
   controlPlayback() {
     const that = this;
     this.playButton.addEventListener("click", (e) => {
+      if (Tone.context.state !== "running") {
+        Tone.context.resume();
+      } 
       if (that.sequence.state === 'stopped') {
         that.sequence.start(1); 
       } else {

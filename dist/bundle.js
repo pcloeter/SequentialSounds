@@ -256,6 +256,10 @@ function () {
     value: function controlPlayback() {
       var that = this;
       this.playButton.addEventListener("click", function (e) {
+        if (tone__WEBPACK_IMPORTED_MODULE_0___default.a.context.state !== "running") {
+          tone__WEBPACK_IMPORTED_MODULE_0___default.a.context.resume();
+        }
+
         if (that.sequence.state === 'stopped') {
           that.sequence.start(1);
         } else {
