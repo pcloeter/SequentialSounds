@@ -47,6 +47,7 @@ class Structure{
         this.toggleSelect(note);
       });
 
+
       noteContainer.appendChild(note);
     return noteContainer;
   }

@@ -48,7 +48,7 @@ class Sequencer {
             document.querySelectorAll(`.pos-${pos}`).forEach(note => {
             note.removeAttribute("data-playing");
           });
-        }, 100);
+        }, 300);
         }
       }
     }, this.interval(), "4n");

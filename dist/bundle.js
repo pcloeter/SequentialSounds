@@ -1608,15 +1608,28 @@ module.exports = g;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _structure_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./structure.js */ "./src/structure.js");
-/* harmony import */ var tone__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tone */ "./node_modules/tone/build/Tone.js");
-/* harmony import */ var tone__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(tone__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _sequencer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sequencer */ "./src/sequencer.js");
-
+/* harmony import */ var _sequencer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sequencer */ "./src/sequencer.js");
 
 
 document.addEventListener("DOMContentLoaded", function () {
+  var modal = document.getElementById('modal-container');
+  var button = document.getElementById('modal-button');
+  var close = document.getElementById('close');
+  button.addEventListener('click', function () {
+    modal.style.display = "block";
+  });
+  close.addEventListener('click', function () {
+    modal.style.display = "none";
+  });
+
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+
   var structure = new _structure_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
-  var sequencer = new _sequencer__WEBPACK_IMPORTED_MODULE_2__["default"](structure);
+  var sequencer = new _sequencer__WEBPACK_IMPORTED_MODULE_1__["default"](structure);
   sequencer.controlPlayback();
   sequencer.resetSequencer();
 });
@@ -1715,7 +1728,7 @@ function () {
             document.querySelectorAll(".pos-".concat(pos)).forEach(function (note) {
               note.removeAttribute("data-playing");
             });
-          }, 100);
+          }, 300);
         }
       }
     }, this.interval(), "4n");
