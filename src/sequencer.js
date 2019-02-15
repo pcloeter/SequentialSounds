@@ -1,5 +1,4 @@
 import Tone from 'tone';
-import { notDeepEqual } from 'assert';
 
 class Sequencer {
   constructor(structure) {
