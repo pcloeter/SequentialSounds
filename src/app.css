@@ -16,7 +16,7 @@ body {
 
 button {
   height: 30px;
-  margin: 0px 20px 20px 20px ;
+  margin: 0px 20px 0px 20px ;
   box-shadow: 1px 1px 8px #a19655;
   font-weight: 700;
   width: 100px;
@@ -234,4 +234,34 @@ button {
   font-size: 18px;
   line-height: 25px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.radio-conatiner {
+  box-shadow: 1px 1px 8px #a19655;
+}
+
+.scales-container div {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 10px;
+  
+}
+.scales-container label {
+  vertical-align: middle;
+}
+.scales-container input {
+  vertical-align: middle;
+  
+}
+
+.radio-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
 }

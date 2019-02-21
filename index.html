@@ -27,13 +27,34 @@
             <h4 id='modal-title'>It's So Easy!</h4>
             <p id='modal-info'>Each colored row represents a different note. <br>
               Simply click on the notes you want to select for playback. <br>
-              If you want, you can add notes to the sequence as it goes! <br> <br>
+              If you want, you can add notes to the sequence as it goes! <br>
+              Select a different scale-type if you're musically savy, or just want to switch things up.
+              <br> <br>
               Have fun!</p>
           </div>
         </div>
       <button id="play-button">Play / Stop</button>
       <button id="reset-button">Reset</button>
     </div>
+        <div class="scales-container">
+          <div class="radio-container">
+            <div class="radio-div">
+              <input type="radio" id="major"
+               name="scale" value="major">
+              <label for="major">Major</label>
+            </div>
+            <div class="radio-div">
+            <input type="radio" id="whole-tone"
+             name="scale" value="whole-tone" checked>
+            <label for="whole-tone">Whole Tone</label>
+            </div>
+            <div class="radio-div">
+            <input type="radio" id="minor"
+             name="scale" value="minor">
+            <label for="minor">Minor</label>
+            </div>
+          </div>
+        </div>
     <div class="sequencer"></div>
 
     <div class="links-container">

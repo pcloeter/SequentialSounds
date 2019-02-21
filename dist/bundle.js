@@ -169,7 +169,6 @@ function () {
 
     _classCallCheck(this, Sequencer);
 
-    this.keys = ['D3', "F3", "A3", "C4", "E4", "G4", "B4", "D5"];
     this.instrument = new tone__WEBPACK_IMPORTED_MODULE_0___default.a.PolySynth(8, tone__WEBPACK_IMPORTED_MODULE_0___default.a.Synth).toMaster();
     this.oldSoundRows = structure.soundRows;
     this.newSoundRows = structure.soundRowsPlayback;
@@ -178,6 +177,7 @@ function () {
     this.playButton = document.getElementById("play-button");
     this.controlPlayback = this.controlPlayback.bind(this);
     this.resetSequencer = this.resetSequencer.bind(this);
+    this.whichScale = this.whichScale.bind(this);
     this.demo = [{
       soundNumber: 0,
       attacks: [false, true, false, true, false, false, false, false, false, false, false, false, false, false, false, false]
@@ -225,7 +225,7 @@ function () {
             note.setAttribute("data-playing", "true");
           });
 
-          _this.instrument.triggerAttackRelease(_this.keys[i], "4n");
+          _this.instrument.triggerAttackRelease(_this.whichScale()[i], "4n");
 
           setTimeout(function () {
             document.querySelectorAll(".pos-".concat(pos)).forEach(function (note) {
@@ -262,6 +262,12 @@ function () {
           that.sequence.stop();
         }
       });
+    }
+  }, {
+    key: "whichScale",
+    value: function whichScale() {
+      var scale = document.querySelector('input[name="scale"]:checked').value;
+      if (scale === 'major') return ['C4', "D4", "E4", "F4", "G4", "A4", "B4", "C5"];else if (scale === 'whole-tone') return ['C4', "D4", "E4", "Gb4", "Ab4", "Bb4", "C5", "D5"];else return ['C4', "D4", "Eb4", "F4", "G4", "Ab4", "Bb4", "C5"];
     }
   }]);
 
