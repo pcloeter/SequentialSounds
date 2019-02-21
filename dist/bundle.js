@@ -267,7 +267,7 @@ function () {
     key: "whichScale",
     value: function whichScale() {
       var scale = document.querySelector('input[name="scale"]:checked').value;
-      if (scale === 'major') return ['C4', "D4", "E4", "F4", "G4", "A4", "B4", "C5"];else if (scale === 'whole-tone') return ['C4', "D4", "E4", "Gb4", "Ab4", "Bb4", "C5", "D5"];else return ['C4', "D4", "Eb4", "F4", "G4", "Ab4", "Bb4", "C5"];
+      if (scale === 'major') return ['C4', "D4", "E4", "F4", "G4", "A4", "B4", "C5"];else if (scale === 'whole-tone') return ['C4', "D4", "E4", "Gb4", "Ab4", "Bb4", "C5", "D5"];else if (scale === 'crazy') return [["C4", "E4"], ["D4", "F#4"], ["E4", "G#4"], ["F#4", "A#4"], ["G#4", "C5"], ["A#4", "D5"], ["C5", "E5"], ["D5", "F#5"]];else return ['C4', "D4", "Eb4", "F4", "G4", "Ab4", "Bb4", "C5"];
     }
   }]);
 
