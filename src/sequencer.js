@@ -1,8 +1,8 @@
 import Tone from 'tone';
 
+
 class Sequencer {
   constructor(structure) {
-    this.keys = ['D3', "F3", "A3", "C4", "E4", "G4", "B4", "D5"];
     this.instrument = new Tone.PolySynth(8, Tone.Synth).toMaster();
     this.oldSoundRows = structure.soundRows;
     this.newSoundRows = structure.soundRowsPlayback;
@@ -11,6 +11,7 @@ class Sequencer {
     this.playButton = document.getElementById("play-button");
     this.controlPlayback = this.controlPlayback.bind(this);
     this.resetSequencer = this.resetSequencer.bind(this);
+    this.whichScale = this.whichScale.bind(this);
 
     
     this.demo = [
@@ -42,7 +43,7 @@ class Sequencer {
           document.querySelectorAll(`.pos-${pos}`).forEach(note => {
             note.setAttribute("data-playing", "true");
           });
-          this.instrument.triggerAttackRelease((this.keys[i]), "4n")
+          this.instrument.triggerAttackRelease((this.whichScale()[i]), "4n")
           setTimeout( () => {
             document.querySelectorAll(`.pos-${pos}`).forEach(note => {
             note.removeAttribute("data-playing");
@@ -75,8 +76,13 @@ class Sequencer {
       }
     }
   )};
-  
-  
+
+  whichScale () {
+    const scale = document.querySelector('input[name="scale"]:checked').value;
+    if (scale === 'major') return ['C4', "D4", "E4", "F4", "G4", "A4", "B4", "C5"];
+    else if (scale === 'whole-tone') return  ['C4', "D4", "E4", "Gb4", "Ab4", "Bb4", "C5", "D5"];
+    else return ['C4', "D4", "Eb4", "F4", "G4", "Ab4", "Bb4", "C5"];
+  }  
 }
 
 export default Sequencer;
