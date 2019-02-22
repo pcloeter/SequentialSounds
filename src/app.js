@@ -23,5 +23,6 @@ document.addEventListener("DOMContentLoaded", ()  => {
   const sequencer = new Sequencer(structure);
   sequencer.controlPlayback();
   sequencer.resetSequencer();
+  sequencer.setDemo();
 
   });

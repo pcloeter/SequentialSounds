@@ -138,6 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var sequencer = new _sequencer__WEBPACK_IMPORTED_MODULE_1__["default"](structure);
   sequencer.controlPlayback();
   sequencer.resetSequencer();
+  sequencer.setDemo();
 });
 
 /***/ }),
@@ -178,31 +179,7 @@ function () {
     this.controlPlayback = this.controlPlayback.bind(this);
     this.resetSequencer = this.resetSequencer.bind(this);
     this.whichScale = this.whichScale.bind(this);
-    this.demo = [{
-      soundNumber: 0,
-      attacks: [false, true, false, true, false, false, false, false, false, false, false, false, false, false, false, false]
-    }, {
-      soundNumber: 1,
-      attacks: [false, false, false, false, false, true, false, false, false, false, false, false, false, true, false, false]
-    }, {
-      soundNumber: 2,
-      attacks: [false, false, false, false, false, false, true, false, false, false, false, false, false, true, false, false]
-    }, {
-      soundNumber: 3,
-      attacks: [false, false, false, false, false, false, false, true, false, false, false, false, false, true, false, false]
-    }, {
-      soundNumber: 4,
-      attacks: [false, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false]
-    }, {
-      soundNumber: 5,
-      attacks: [false, false, false, false, false, false, false, false, false, true, false, false, false, false, false, false]
-    }, {
-      soundNumber: 6,
-      attacks: [false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false]
-    }, {
-      soundNumber: 7,
-      attacks: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
-    }];
+    this.demoButton = document.getElementById("demo");
 
     this.interval = function () {
       var array = [];
@@ -267,7 +244,53 @@ function () {
     key: "whichScale",
     value: function whichScale() {
       var scale = document.querySelector('input[name="scale"]:checked').value;
-      if (scale === 'major') return ['C4', "D4", "E4", "F4", "G4", "A4", "B4", "C5"];else if (scale === 'whole-tone') return ['C4', "D4", "E4", "Gb4", "Ab4", "Bb4", "C5", "D5"];else if (scale === 'crazy') return [["C4", "E4"], ["D4", "F#4"], ["E4", "G#4"], ["F#4", "A#4"], ["G#4", "C5"], ["A#4", "D5"], ["C5", "E5"], ["D5", "F#5"]];else return ['C4', "D4", "Eb4", "F4", "G4", "Ab4", "Bb4", "C5"];
+      if (scale === 'major') return ['C4', "D4", "E4", "F4", "G4", "A4", "B4", "C5"];else if (scale === 'whole-tone') return ['C4', "D4", "E4", "Gb4", "Ab4", "Bb4", "C5", "D5"]; // else if (scale === 'crazy') return [["C4", "E4"], ["D4", "F#4"], ["E4", "G#4"], ["F#4", "A#4"], ["G#4", "C5"], ["A#4", "D5"], ["C5", "E5"], ["D5","F#5"]]
+      else return ['C4', "D4", "Eb4", "F4", "G4", "Ab4", "Bb4", "C5"];
+    }
+  }, {
+    key: "setDemo",
+    value: function setDemo() {
+      var _this2 = this;
+
+      this.demoButton.addEventListener("click", function () {
+        _this2.resetSequencer();
+
+        var array = [{
+          soundNumber: 0,
+          attacks: [true, true, false, false, false, true, true, true, true, false, false, false, false, false, false, false]
+        }, {
+          soundNumber: 1,
+          attacks: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true]
+        }, {
+          soundNumber: 2,
+          attacks: [true, true, true, true, true, true, false, false, false, false, false, true, false, false, false, false]
+        }, {
+          soundNumber: 3,
+          attacks: [false, false, false, false, false, false, true, true, true, false, false, false, true, false, true, false]
+        }, {
+          soundNumber: 4,
+          attacks: [false, false, true, false, false, false, false, false, false, false, false, false, false, true, false, true]
+        }, {
+          soundNumber: 5,
+          attacks: [true, true, false, true, true, true, true, true, true, false, false, false, false, false, true, false]
+        }, {
+          soundNumber: 6,
+          attacks: [false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, true]
+        }, {
+          soundNumber: 7,
+          attacks: [false, false, false, true, true, false, false, false, false, false, false, false, false, false, false, false]
+        }];
+
+        for (var i = 0; i < array.length; i++) {
+          var notes = document.querySelectorAll(".sound-sound".concat(i));
+
+          for (var j = 0; j < 16; j++) {
+            if (array[i].attacks[j] === true) {
+              notes[j].setAttribute("data-selected", 'true');
+            }
+          }
+        }
+      });
     }
   }]);
 
