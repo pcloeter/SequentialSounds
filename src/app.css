@@ -1,14 +1,18 @@
 
-body {
-  height: auto;
-  width: auto;
+html {
+  min-height: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-color: green;
-  margin: 0;
+}
+
+body {
+  margin: 0px;
+  height: 100%;
+  background-color: black;
+  display: flex;
 }
 
 button {
