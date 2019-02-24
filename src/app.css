@@ -1,16 +1,14 @@
-html {
-}
 
 body {
   height: auto;
-  max-width: 100%;
+  width: 100vw;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-color: black;
-  margin: 1px;
+  background-color: red;
+  margin: 100px;
 }
 
 button {
