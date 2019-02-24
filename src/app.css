@@ -23,7 +23,7 @@ button {
   background-blend-mode: color-burn;
   background-color: black;
   color: white;
-  width: 100%;
+  width: auto;
   height: auto;
   display: flex;
   flex-direction: column;
