@@ -1,7 +1,7 @@
 
 body {
   height: auto;
-  width: 100%;
+  width: auto;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -23,7 +23,7 @@ button {
   background-blend-mode: color-burn;
   background-color: black;
   color: white;
-  width: auto;
+  width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
