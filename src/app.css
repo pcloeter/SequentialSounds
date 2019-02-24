@@ -10,6 +10,7 @@ body {
   align-items: center;
   margin: 0px;
   background-color: black;
+  margin: 1px;
 }
 
 button {
@@ -24,8 +25,8 @@ button {
   background-blend-mode: color-burn;
   background-color: black;
   color: white;
-  height: auto;
-  width: auto;
+  height: 100%;
+  width: 100%;
   padding: 30px;
   display: flex;
   flex-direction: column;
