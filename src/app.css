@@ -7,7 +7,7 @@ body {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-color: red;
+  background-color: blue;
   margin: 100px;
 }
 
@@ -24,7 +24,6 @@ button {
   background-color: black;
   color: white;
   height: auto;
-  max-width: 100%;
   padding: 30px;
   display: flex;
   flex-direction: column;
