@@ -1,7 +1,7 @@
 
 body {
   height: auto;
-  max-width: 100vw;
+  width: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -28,7 +28,6 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 30px;
 }
 
 .main-title {
@@ -45,8 +44,8 @@ button {
   flex-direction: column;
   background-color: black;
   justify-content: center;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 
@@ -100,35 +99,35 @@ button {
 
 
 .sound-sound0 {
-  border: 5px solid rgb(255, 145, 0);
+  border: 4px solid rgb(255, 145, 0);
 }
 
 .sound-sound1 {
-  border: 5px solid red;
+  border: 4px solid red;
 }
 
 .sound-sound2 {
-  border: 5px solid purple;
+  border: 4px solid purple;
 }
 
 .sound-sound3 {
-  border: 5px solid indigo;
+  border: 4px solid indigo;
 }
 
 .sound-sound4 {
-  border: 5px solid blue;
+  border: 4px solid blue;
 }
 
 .sound-sound5 {
-  border: 5px solid rgb(2, 224, 194);
+  border: 4px solid rgb(2, 224, 194);
 }
 
 .sound-sound6 {
-  border: 5px solid rgb(0, 255, 0);
+  border: 4px solid rgb(0, 255, 0);
 }
 
 .sound-sound7 {
-  border: 5px solid yellow;
+  border: 4px solid yellow;
 }
 
 .note [data-selected="false"]:hover{
