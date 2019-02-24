@@ -267,9 +267,7 @@ button {
 
 
 
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-  body {
-    background: #999;
-    width: 100%;
-  }
+@viewport {
+  width: device-width ;
+  zoom: 1.0 ;
 }
