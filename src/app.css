@@ -2,13 +2,13 @@ html {
 }
 
 body {
+  height: auto;
   max-width: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  margin: 0px;
   background-color: black;
   margin: 1px;
 }
@@ -25,8 +25,8 @@ button {
   background-blend-mode: color-burn;
   background-color: black;
   color: white;
-  height: 100%;
-  width: 100%;
+  height: auto;
+  max-width: 100%;
   padding: 30px;
   display: flex;
   flex-direction: column;
