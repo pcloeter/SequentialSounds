@@ -20,7 +20,7 @@ SequentialSounds is a 1980's styled, Lite-Brite themed Audio Sequencer!
 
 ## Technologies
 
-Sequential Sounds was built using:
+SequentialSounds was built using:
 
 - `JavaScript` for foundational code
 - `Tone.js` for interfacing with Web Audio
