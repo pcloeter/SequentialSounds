@@ -3,6 +3,7 @@
 ## Welcome!
 
 SequentialSounds is a 1980's styled, Lite-Brite themed Audio Sequencer!
+[Click here to go straight to it!](http://pdcloeter.com/SequentialSounds/)
 ![Screenshot](/assets/ss.gif)
 
 ## Wow! How do I use it?
