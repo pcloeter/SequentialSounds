@@ -244,8 +244,8 @@ function () {
     key: "whichScale",
     value: function whichScale() {
       var scale = document.querySelector('input[name="scale"]:checked').value;
-      if (scale === 'major') return ['C4', "D4", "E4", "F4", "G4", "A4", "B4", "C5"];else if (scale === 'whole-tone') return ['C4', "D4", "E4", "Gb4", "Ab4", "Bb4", "C5", "D5"]; // else if (scale === 'crazy') return [["C4", "E4"], ["D4", "F#4"], ["E4", "G#4"], ["F#4", "A#4"], ["G#4", "C5"], ["A#4", "D5"], ["C5", "E5"], ["D5","F#5"]]
-      else return ['C4', "D4", "Eb4", "F4", "G4", "Ab4", "Bb4", "C5"];
+      if (scale === 'major') return ['C4', "D4", "E4", "F4", "G4", "A4", "B4", "C5"].reverse();else if (scale === 'whole-tone') return ['C4', "D4", "E4", "Gb4", "Ab4", "Bb4", "C5", "D5"].reverse(); // else if (scale === 'crazy') return [["C4", "E4"], ["D4", "F#4"], ["E4", "G#4"], ["F#4", "A#4"], ["G#4", "C5"], ["A#4", "D5"], ["C5", "E5"], ["D5","F#5"]]
+      else return ['C4', "D4", "Eb4", "F4", "G4", "Ab4", "Bb4", "C5"].reverse();
     }
   }, {
     key: "setDemo",
@@ -257,28 +257,28 @@ function () {
 
         var array = [{
           soundNumber: 0,
-          attacks: [true, true, false, false, false, true, true, true, true, false, false, false, false, false, false, false]
+          attacks: [true, false, false, false, true, true, true, false, false, false, false, false, true, true, true, false]
         }, {
           soundNumber: 1,
-          attacks: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true]
+          attacks: [false, true, false, true, false, false, false, false, true, true, true, false, false, false, false, false]
         }, {
           soundNumber: 2,
-          attacks: [true, true, true, true, true, true, false, false, false, false, false, true, false, false, false, false]
+          attacks: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
         }, {
           soundNumber: 3,
-          attacks: [false, false, false, false, false, false, true, true, true, false, false, false, true, false, true, false]
+          attacks: [true, false, true, true, true, true, true, false, false, false, false, false, true, true, true, false]
         }, {
           soundNumber: 4,
-          attacks: [false, false, true, false, false, false, false, false, false, false, false, false, false, true, false, true]
+          attacks: [false, false, false, false, false, false, false, false, true, true, true, false, false, false, false, false]
         }, {
           soundNumber: 5,
-          attacks: [true, true, false, true, true, true, true, true, true, false, false, false, false, false, true, false]
+          attacks: [true, false, false, false, true, true, true, false, false, false, false, false, true, false, false, false]
         }, {
           soundNumber: 6,
-          attacks: [false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, true]
+          attacks: [false, true, false, true, false, false, false, false, true, true, true, false, false, false, false, false]
         }, {
           soundNumber: 7,
-          attacks: [false, false, false, true, true, false, false, false, false, false, false, false, false, false, false, false]
+          attacks: [false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false]
         }];
 
         for (var i = 0; i < array.length; i++) {
