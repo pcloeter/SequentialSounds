@@ -1,6 +1,5 @@
 
 html {
-  min-height: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -10,28 +9,27 @@ html {
 
 body {
   margin: 0px;
-  height: 100%;
+  max-height: 95vh;
+  max-width: 90vw;
   background-color: black;
   display: flex;
   /* width: 100%  */
-  max-width: 80vw;
+  /* max-width: 80vw; */
   padding: 0 10 0 10;
 }
 
 button {
-  height: 30px;
+  height: 2vw;
   margin: 0px 15px 0px 15px ;
   box-shadow: 1px 1px 8px #a19655;
   font-weight: 700;
-  width: 90px;
+  min-width: 8vw;
 }
 
 #main {
   background-blend-mode: color-burn;
   background-color: black;
   color: white;
-  width: 100%;
-  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,20 +37,21 @@ button {
 
 .main-title {
   font-family: Monoton;
-  font-size: 48px;
+  font-size: 4vw;
   /* text-shadow: 3px 3px gray; */
   font-weight: 20;
-  margin: 20px;
+  margin: 1vw;
   text-shadow: 6px 6px 8px #a19655;
 }
 .sequencer {
-  max-width: 100vw;
   display: flex;
   flex-direction: column;
   background-color: black;
   justify-content: center;
   padding-left: 40px;
   padding-right: 40px;
+  max-width: 90%;
+  /* max-height: 80%; */
 }
 
 
@@ -62,15 +61,16 @@ button {
   background-color: black;
   justify-content: center;
   color: white;
+  margin: .7vh;
 }
 
 .note-face-front {
-  height: 35px;
-  width: 35px;
-  border-radius: 35px;
+  height: 2.5vw;
+  width: 2.5vw;
+  border-radius: 2.5vw;
   text-align: center;
   vertical-align: middle;
-  margin: 3px;
+  margin: .4vw;
 }
 
 @-webkit-keyframes pulse-shrink {
@@ -106,40 +106,40 @@ button {
 
 
 .sound-sound0 {
-  border: 4px solid rgb(255, 145, 0);
+  border: .4vw solid rgb(255, 145, 0);
 }
 
 .sound-sound1 {
-  border: 4px solid red;
+  border: .4vw solid red;
 }
 
 .sound-sound2 {
-  border: 4px solid purple;
+  border: .4vw solid purple;
 }
 
 .sound-sound3 {
-  border: 4px solid indigo;
+  border: .4vw solid indigo;
 }
 
 .sound-sound4 {
-  border: 4px solid blue;
+  border: .4vw solid blue;
 }
 
 .sound-sound5 {
-  border: 4px solid rgb(2, 224, 194);
+  border: .4vw solid rgb(2, 224, 194);
 }
 
 .sound-sound6 {
-  border: 4px solid rgb(0, 255, 0);
+  border: .4vw solid rgb(0, 255, 0);
 }
 
 .sound-sound7 {
-  border: 4px solid yellow;
+  border: .4vw solid yellow;
 }
 
 .note [data-selected="false"]:hover{
   transform: rotateY(180deg);
-  margin: 3px;
+  margin: .4vw;
 }
 
 .note [data-playing="true"] {
@@ -150,7 +150,7 @@ button {
   position: relative;
   transition: transform 2s;
   transform-style: preserve-3d;
-  margin: 3px;
+  margin: .4vw;
 }
 
 .links-container {
@@ -162,7 +162,7 @@ button {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   vertical-align: middle;
   text-align: center;
-  margin: 30px;
+  margin: 2vw 3vw 2vw 3vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -180,11 +180,11 @@ button {
   text-decoration: none;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 300;
-  margin: 5px;
+  margin: 1vw;
 }
 
 .links img {
-  height: 35px;
+  height: 3vw;
   float: left;
 }
 
@@ -241,8 +241,8 @@ button {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.radio-conatiner {
-  box-shadow: 1px 1px 8px #a19655;
+.radio-container {
+  /* box-shadow: 1px 1px 8px #a19655; */
 }
 
 .scales-container div {
