@@ -19,7 +19,7 @@ body {
 }
 
 button {
-  height: 2vw;
+  height: 3vw;
   margin: 0px 15px 0px 15px ;
   box-shadow: 1px 1px 8px #a19655;
   font-weight: 700;
@@ -272,6 +272,11 @@ button {
 
 
 
-@viewport {
-  width: device-width ;
+@media (max-width: 400px) {
+  
+  button {
+    height: 6vw;
+    font-size: 9px;
+    margin: 0 10px 0 10px;
+  }
 }
