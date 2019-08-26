@@ -18,12 +18,17 @@ body {
   padding: 0 10 0 10;
 }
 
+.button-container {
+  display: flex;
+}
+
 button {
-  height: 3vw;
-  margin: 0px 15px 0px 15px ;
+  height: 4vh;
+  margin: 0px 15px 0px 15px;
   box-shadow: 1px 1px 8px #a19655;
-  font-weight: 700;
+  font-weight: 600;
   min-width: 8vw;
+  font-size: 1.5vw;
 }
 
 #main {
@@ -37,7 +42,7 @@ button {
 
 .main-title {
   font-family: Monoton;
-  font-size: 4vw;
+  font-size: 5vw;
   /* text-shadow: 3px 3px gray; */
   font-weight: 20;
   margin: 1vw;
@@ -174,7 +179,7 @@ button {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 300;
   margin: 1vw;
-  font-size: 2vw;
+  font-size: 1.5vw;
 
 }
 
@@ -236,16 +241,12 @@ button {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.radio-container {
-  /* box-shadow: 1px 1px 8px #a19655; */
-}
-
 .scales-container div {
   display: flex;
   justify-content: center;
   flex-direction: row;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 13px;
+  font-size: 1.5vw;
   font-weight: 600;
   margin: 10px;
   
@@ -253,7 +254,6 @@ button {
 
 .scales-container input {
   vertical-align: middle;
-  
 }
 
 .radio-div {
@@ -264,14 +264,12 @@ button {
   margin: 10px;
 }
 
-
-
-
-@media (max-width: 400px) {
-  
+@media (max-width: 460px) {
   button {
-    height: 6vw;
-    font-size: 9px;
-    margin: 0 10px 0 10px;
+    height: 2vh;
+  }
+
+  .scales-container div {
+    margin: 4px;
   }
 }
