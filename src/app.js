@@ -24,5 +24,5 @@ document.addEventListener("DOMContentLoaded", ()  => {
   sequencer.controlPlayback();
   sequencer.resetSequencer();
   sequencer.setDemo();
-
-  });
+  sequencer.whichShape();
+});

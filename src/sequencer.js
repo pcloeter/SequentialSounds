@@ -1,6 +1,5 @@
 import Tone from 'tone';
 
-
 class Sequencer {
   constructor(structure) {
     this.instrument = new Tone.PolySynth(8, Tone.Synth).toMaster();
@@ -12,6 +11,7 @@ class Sequencer {
     this.controlPlayback = this.controlPlayback.bind(this);
     this.resetSequencer = this.resetSequencer.bind(this);
     this.whichScale = this.whichScale.bind(this);
+    this.whichShape = this.whichShape.bind(this);
     this.demoButton = document.getElementById("demo");
     
     
@@ -32,7 +32,7 @@ class Sequencer {
           document.querySelectorAll(`.pos-${pos}`).forEach(note => {
             note.setAttribute("data-playing", "true");
           });
-          this.instrument.triggerAttackRelease((this.whichScale()[i]), "4n")
+          this.instrument.triggerAttackRelease((this.whichScale()[i]), "4n");
           setTimeout( () => {
             document.querySelectorAll(`.pos-${pos}`).forEach(note => {
               note.removeAttribute("data-playing");
@@ -70,10 +70,22 @@ class Sequencer {
     const scale = document.querySelector('input[name="scale"]:checked').value;
     if (scale === 'major') return ['C4', "D4", "E4", "F4", "G4", "A4", "B4", "C5"].reverse();
     else if (scale === 'whole-tone') return  ['C4', "D4", "E4", "Gb4", "Ab4", "Bb4", "C5", "D5"].reverse();
-    // else if (scale === 'crazy') return [["C4", "E4"], ["D4", "F#4"], ["E4", "G#4"], ["F#4", "A#4"], ["G#4", "C5"], ["A#4", "D5"], ["C5", "E5"], ["D5","F#5"]]
     else return ['C4', "D4", "Eb4", "F4", "G4", "Ab4", "Bb4", "C5"].reverse();
-  }  
-    
+  }
+
+  whichShape () {
+    const shapes = document.querySelectorAll('input[name="shape"]');
+    shapes.forEach(shape => {
+      shape.addEventListener("click", () => {
+        const notes = document.querySelectorAll('.note-face-front');
+        const design = document.querySelector('input[name="shape"]:checked').value;
+        notes.forEach( note => {
+          note.setAttribute("shape", design);
+        })
+      })
+    })
+  }
+
   setDemo () {
     this.demoButton.addEventListener("click", () => {
       this.resetSequencer();
@@ -97,7 +109,6 @@ class Sequencer {
       }
     })
   }
-
 }
       
-      export default Sequencer;
+export default Sequencer;

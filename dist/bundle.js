@@ -139,6 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
   sequencer.controlPlayback();
   sequencer.resetSequencer();
   sequencer.setDemo();
+  sequencer.whichShape();
 });
 
 /***/ }),
@@ -179,6 +180,7 @@ function () {
     this.controlPlayback = this.controlPlayback.bind(this);
     this.resetSequencer = this.resetSequencer.bind(this);
     this.whichScale = this.whichScale.bind(this);
+    this.whichShape = this.whichShape.bind(this);
     this.demoButton = document.getElementById("demo");
 
     this.interval = function () {
@@ -244,8 +246,21 @@ function () {
     key: "whichScale",
     value: function whichScale() {
       var scale = document.querySelector('input[name="scale"]:checked').value;
-      if (scale === 'major') return ['C4', "D4", "E4", "F4", "G4", "A4", "B4", "C5"].reverse();else if (scale === 'whole-tone') return ['C4', "D4", "E4", "Gb4", "Ab4", "Bb4", "C5", "D5"].reverse(); // else if (scale === 'crazy') return [["C4", "E4"], ["D4", "F#4"], ["E4", "G#4"], ["F#4", "A#4"], ["G#4", "C5"], ["A#4", "D5"], ["C5", "E5"], ["D5","F#5"]]
-      else return ['C4', "D4", "Eb4", "F4", "G4", "Ab4", "Bb4", "C5"].reverse();
+      if (scale === 'major') return ['C4', "D4", "E4", "F4", "G4", "A4", "B4", "C5"].reverse();else if (scale === 'whole-tone') return ['C4', "D4", "E4", "Gb4", "Ab4", "Bb4", "C5", "D5"].reverse();else return ['C4', "D4", "Eb4", "F4", "G4", "Ab4", "Bb4", "C5"].reverse();
+    }
+  }, {
+    key: "whichShape",
+    value: function whichShape() {
+      var shapes = document.querySelectorAll('input[name="shape"]');
+      shapes.forEach(function (shape) {
+        shape.addEventListener("click", function () {
+          var notes = document.querySelectorAll('.note-face-front');
+          var design = document.querySelector('input[name="shape"]:checked').value;
+          notes.forEach(function (note) {
+            note.setAttribute("shape", design);
+          });
+        });
+      });
     }
   }, {
     key: "setDemo",
@@ -351,6 +366,7 @@ function () {
       var note = document.createElement('div');
       note.setAttribute("class", "\n        note-face-front \n        sound-".concat(sound, " \n        pos-").concat(pos, " \n        pulse-shrink\n        "));
       note.setAttribute("data-selected", 'false');
+      note.setAttribute("shape", "circle");
       note.addEventListener('click', function () {
         _this.toggleSelect(note);
       });

@@ -43,6 +43,7 @@ class Structure{
         `);
 
       note.setAttribute("data-selected", 'false');
+      note.setAttribute("shape", "circle");
       note.addEventListener('click', ()  => {
         this.toggleSelect(note);
       });

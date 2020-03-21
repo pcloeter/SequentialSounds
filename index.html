@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
@@ -37,25 +38,40 @@
       <button id="reset-button">Reset</button>
       <button id="demo">Set Demo!</button>
     </div>
-        <div class="scales-container">
-          <div class="radio-container">
-            <div class="radio-div">
-              <input type="radio" id="major"
-               name="scale" value="major" checked>
-              <label for="major">Major</label>
-            </div>
-            <div class="radio-div">
+      <div class="scales-container">
+        <div class="radio-container">
+          <div class="radio-div">
+            <input type="radio" id="major"
+              name="scale" value="major" checked>
+            <label for="major">Major</label>
+          </div>
+          <div class="radio-div">
             <input type="radio" id="whole-tone"
-             name="scale" value="whole-tone">
+              name="scale" value="whole-tone">
             <label for="whole-tone">Whole Tone</label>
-            </div>
-            <div class="radio-div">
+          </div>
+          <div class="radio-div">
             <input type="radio" id="minor"
-             name="scale" value="minor">
+              name="scale" value="minor">
             <label for="minor">Minor</label>
-            </div>
+          </div>
+          <div class="shapes first">
+            <input type="radio" id="circles"
+              name="shape" value="circle" checked>
+            <label for="circles">Circles</label>
+          </div>
+          <div class="shapes">
+            <input type="radio" id="squares"
+              name="shape" value="square">
+            <label for="squares">Squares</label>
+          </div>
+          <div class="shapes">
+            <input type="radio" id="ovals"
+              name="shape" value="oval">
+            <label for="ovals">Ovals</label>
           </div>
         </div>
+      </div>
     <div class="sequencer"></div>
 
     <div class="links-container">
@@ -80,10 +96,6 @@
         <p>Project Repo</p>
       </div>
     </div>
-
-
   </div>
-
-
 </body>
 </html>
