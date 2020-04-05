@@ -89,7 +89,7 @@ class Structure{
   }
 
   addNoteValueInput(sound, row, rowContainer) {
-    const options = ['C', `C#/D`,'D', `D#/E`, 'E', 'F', `F#/G`, 'G', `G#/A`, 'A', `A#/B`, 'B', 'C']
+    const options = ['C', `C#/Db`,'D', `D#/Eb`, 'E', 'F', `F#/Gb`, 'G', `G#/Ab`, 'A', `A#/Bb`, 'B', 'C']
     const values = ['C4', 'Db4', 'D4', 'Eb4', 'E4', 'F4', 'Gb4', 'G4', 'Ab4', 'A4', 'Bb4', 'B4', 'C5'];
     let dropdown = document.createElement('select');
     dropdown.setAttribute("name", sound);
