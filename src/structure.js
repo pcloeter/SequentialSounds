@@ -16,17 +16,20 @@ class Structure{
 
   makeRow(sound) {
     let notes = [];
-    let row = document.createElement('div')
-    row.setAttribute("class", `row-${sound}`)
+    let rowContainer = document.createElement('div');
+    rowContainer.setAttribute("class", "rowContainer");
+    let row = document.createElement('div');
+    row.setAttribute("class", `row-${sound}`);
 
     for (let i = 0; i < 16; i++) {
       let note = this.makeNote(sound, i);
       row.appendChild(note);
+      rowContainer.appendChild(row);
       notes.push(note);
     }
-    document.querySelector('.sequencer').appendChild(row);
+    document.querySelector('.sequencer').appendChild(rowContainer);
+    this.addNoteValueInput(sound, row, rowContainer);
     return notes;
-  
   }
 
 
@@ -35,21 +38,20 @@ class Structure{
       noteContainer.setAttribute('class', "note");
     
     let note = document.createElement('div');
-      note.setAttribute("class", `
-        note-face-front 
-        sound-${sound} 
-        pos-${pos} 
-        pulse-shrink
-        `);
+    note.setAttribute("class",
+      `note-face-front 
+      sound-${sound} 
+      pos-${pos} 
+      pulse-shrink`
+    );
 
-      note.setAttribute("data-selected", 'false');
-      note.setAttribute("shape", "circle");
-      note.addEventListener('click', ()  => {
-        this.toggleSelect(note);
-      });
+    note.setAttribute("data-selected", 'false');
+    note.setAttribute("shape", "circle");
+    note.addEventListener('click', ()  => {
+      this.toggleSelect(note);
+    });
 
-
-      noteContainer.appendChild(note);
+    noteContainer.appendChild(note);
     return noteContainer;
   }
     
@@ -73,7 +75,6 @@ class Structure{
     return array;
   }
 
-
   rowPlayback (soundNumber) {
     let attacks = [];
     let notes = document.querySelectorAll(`.sound-sound${soundNumber}`);
@@ -87,6 +88,21 @@ class Structure{
     return {soundNumber, attacks};
   }
 
+  addNoteValueInput(sound, row, rowContainer) {
+    const options = ['C', `C#/D`,'D', `D#/E`, 'E', 'F', `F#/G`, 'G', `G#/A`, 'A', `A#/B`, 'B', 'C']
+    const values = ['C4', 'Db4', 'D4', 'Eb4', 'E4', 'F4', 'Gb4', 'G4', 'Ab4', 'A4', 'Bb4', 'B4', 'C5'];
+    let dropdown = document.createElement('select');
+    dropdown.setAttribute("name", sound);
+    dropdown.setAttribute("class", "note-input")
+
+    values.forEach((val, i) => { 
+      const option = document.createElement('option');
+      option.setAttribute("value", val);
+      option.innerHTML = options[i];
+      dropdown.appendChild(option);
+    })
+    rowContainer.insertBefore(dropdown, row);
+  }
 }
 
 export default Structure;

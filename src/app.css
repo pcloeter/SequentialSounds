@@ -48,6 +48,20 @@ button {
   color: white;
 }
 
+.rowContainer {
+  display: flex;
+  align-items: center;
+}
+
+.note-input {
+  margin-right: 5px;
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
 .note-face-front {
   height: 2.4vw;
   width: 2.4vw;

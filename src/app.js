@@ -25,4 +25,5 @@ document.addEventListener("DOMContentLoaded", ()  => {
   sequencer.resetSequencer();
   sequencer.setDemo();
   sequencer.whichShape();
+  sequencer.toggleNoteInputs();
 });

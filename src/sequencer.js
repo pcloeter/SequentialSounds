@@ -12,6 +12,7 @@ class Sequencer {
     this.resetSequencer = this.resetSequencer.bind(this);
     this.whichScale = this.whichScale.bind(this);
     this.whichShape = this.whichShape.bind(this);
+    this.toggleNoteInputs = this.toggleNoteInputs.bind(this);
     this.demoButton = document.getElementById("demo");
     
     
@@ -49,6 +50,10 @@ class Sequencer {
       document.querySelectorAll('[data-selected="true"]').forEach( note => {
         note.setAttribute("data-selected", 'false');
       })
+      const dropdowns = document.querySelectorAll(".note-input");
+      dropdowns.forEach(dropdown => {
+        dropdown.selectedIndex = 0;
+      })
     })
   };
   
@@ -69,8 +74,18 @@ class Sequencer {
   whichScale () {
     const scale = document.querySelector('input[name="scale"]:checked').value;
     if (scale === 'major') return ['C4', "D4", "E4", "F4", "G4", "A4", "B4", "C5"].reverse();
-    else if (scale === 'whole-tone') return  ['C4', "D4", "E4", "Gb4", "Ab4", "Bb4", "C5", "D5"].reverse();
+    else if (scale === 'custom') return  this.getCustomInput();
     else return ['C4', "D4", "Eb4", "F4", "G4", "Ab4", "Bb4", "C5"].reverse();
+  }
+
+  getCustomInput() {
+    let scale = [];
+    for (let i = 0; i < 8; i++) {
+      const name = `sound${i}`;
+      const el = document.querySelector(`select[name=${name}]`);
+      scale.push(el.value);
+    }
+    return scale;
   }
 
   whichShape () {
@@ -86,18 +101,37 @@ class Sequencer {
     })
   }
 
+  toggleNoteInputs() {
+    const scales = document.querySelectorAll('input[name="scale"]');
+
+    scales.forEach(scale => scale.addEventListener("click", () => {
+      const dropdowns = document.getElementsByClassName("note-input");
+      if (scale.value === "custom") {
+        for (let i = 0; i < dropdowns.length; i++) {
+          dropdowns[i].classList.contains("visible") || dropdowns[i].classList.add("visible");      
+        }
+      } else { 
+        for (let i = 0; i < dropdowns.length; i++) {
+          !dropdowns[i].classList.contains("visible") || dropdowns[i].classList.remove("visible");
+        }
+      }
+    }))
+  }
+
   setDemo () {
     this.demoButton.addEventListener("click", () => {
       this.resetSequencer();
+      const x = true;
+      const o = false;
       const array = [
-        {soundNumber: 0, attacks: [true, false, false, false, true, true, true, false, false, false, false, false, true, true, true, false] },
-        {soundNumber: 1, attacks: [false, true, false, true, false, false, false, false, true, true, true, false, false, false, false, false] },
-        {soundNumber: 2, attacks: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false] },
-        {soundNumber: 3, attacks: [true, false, true, true, true, true, true, false, false, false, false, false, true, true, true, false] },
-        {soundNumber: 4, attacks: [false, false, false, false, false, false, false, false, true, true, true, false, false, false, false, false] },
-        {soundNumber: 5, attacks: [true, false, false, false, true, true, true, false, false, false, false, false, true, false, false, false] },
-        {soundNumber: 6, attacks: [false, true, false, true, false, false, false, false, true, true, true, false, false, false, false, false] },
-        {soundNumber: 7, attacks: [false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false] }
+        {soundNumber: 0, attacks: [x, o, o, o, x, x, x, o, o, o, o, o, x, x, x, o] },
+        {soundNumber: 1, attacks: [o, x, o, x, o, o, o, o, x, x, x, o, o, o, o, o] },
+        {soundNumber: 2, attacks: [o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o] },
+        {soundNumber: 3, attacks: [x, o, x, x, x, x, x, o, o, o, o, o, x, x, x, o] },
+        {soundNumber: 4, attacks: [o, o, o, o, o, o, o, o, x, x, x, o, o, o, o, o] },
+        {soundNumber: 5, attacks: [x, o, o, o, x, x, x, o, o, o, o, o, x, o, o, o] },
+        {soundNumber: 6, attacks: [o, x, o, x, o, o, o, o, x, x, x, o, o, o, o, o] },
+        {soundNumber: 7, attacks: [o, o, x, o, o, o, o, o, o, o, o, o, o, o, o, o] }
       ];
       for (let i = 0; i < array.length; i++) {
         const notes = document.querySelectorAll(`.sound-sound${i}`);

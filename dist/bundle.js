@@ -140,6 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
   sequencer.resetSequencer();
   sequencer.setDemo();
   sequencer.whichShape();
+  sequencer.toggleNoteInputs();
 });
 
 /***/ }),
@@ -181,6 +182,7 @@ function () {
     this.resetSequencer = this.resetSequencer.bind(this);
     this.whichScale = this.whichScale.bind(this);
     this.whichShape = this.whichShape.bind(this);
+    this.toggleNoteInputs = this.toggleNoteInputs.bind(this);
     this.demoButton = document.getElementById("demo");
 
     this.interval = function () {
@@ -224,6 +226,10 @@ function () {
         document.querySelectorAll('[data-selected="true"]').forEach(function (note) {
           note.setAttribute("data-selected", 'false');
         });
+        var dropdowns = document.querySelectorAll(".note-input");
+        dropdowns.forEach(function (dropdown) {
+          dropdown.selectedIndex = 0;
+        });
       });
     }
   }, {
@@ -246,7 +252,20 @@ function () {
     key: "whichScale",
     value: function whichScale() {
       var scale = document.querySelector('input[name="scale"]:checked').value;
-      if (scale === 'major') return ['C4', "D4", "E4", "F4", "G4", "A4", "B4", "C5"].reverse();else if (scale === 'whole-tone') return ['C4', "D4", "E4", "Gb4", "Ab4", "Bb4", "C5", "D5"].reverse();else return ['C4', "D4", "Eb4", "F4", "G4", "Ab4", "Bb4", "C5"].reverse();
+      if (scale === 'major') return ['C4', "D4", "E4", "F4", "G4", "A4", "B4", "C5"].reverse();else if (scale === 'custom') return this.getCustomInput();else return ['C4', "D4", "Eb4", "F4", "G4", "Ab4", "Bb4", "C5"].reverse();
+    }
+  }, {
+    key: "getCustomInput",
+    value: function getCustomInput() {
+      var scale = [];
+
+      for (var i = 0; i < 8; i++) {
+        var name = "sound".concat(i);
+        var el = document.querySelector("select[name=".concat(name, "]"));
+        scale.push(el.value);
+      }
+
+      return scale;
     }
   }, {
     key: "whichShape",
@@ -263,6 +282,26 @@ function () {
       });
     }
   }, {
+    key: "toggleNoteInputs",
+    value: function toggleNoteInputs() {
+      var scales = document.querySelectorAll('input[name="scale"]');
+      scales.forEach(function (scale) {
+        return scale.addEventListener("click", function () {
+          var dropdowns = document.getElementsByClassName("note-input");
+
+          if (scale.value === "custom") {
+            for (var i = 0; i < dropdowns.length; i++) {
+              dropdowns[i].classList.contains("visible") || dropdowns[i].classList.add("visible");
+            }
+          } else {
+            for (var _i = 0; _i < dropdowns.length; _i++) {
+              !dropdowns[_i].classList.contains("visible") || dropdowns[_i].classList.remove("visible");
+            }
+          }
+        });
+      });
+    }
+  }, {
     key: "setDemo",
     value: function setDemo() {
       var _this2 = this;
@@ -270,30 +309,32 @@ function () {
       this.demoButton.addEventListener("click", function () {
         _this2.resetSequencer();
 
+        var x = true;
+        var o = false;
         var array = [{
           soundNumber: 0,
-          attacks: [true, false, false, false, true, true, true, false, false, false, false, false, true, true, true, false]
+          attacks: [x, o, o, o, x, x, x, o, o, o, o, o, x, x, x, o]
         }, {
           soundNumber: 1,
-          attacks: [false, true, false, true, false, false, false, false, true, true, true, false, false, false, false, false]
+          attacks: [o, x, o, x, o, o, o, o, x, x, x, o, o, o, o, o]
         }, {
           soundNumber: 2,
-          attacks: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+          attacks: [o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o]
         }, {
           soundNumber: 3,
-          attacks: [true, false, true, true, true, true, true, false, false, false, false, false, true, true, true, false]
+          attacks: [x, o, x, x, x, x, x, o, o, o, o, o, x, x, x, o]
         }, {
           soundNumber: 4,
-          attacks: [false, false, false, false, false, false, false, false, true, true, true, false, false, false, false, false]
+          attacks: [o, o, o, o, o, o, o, o, x, x, x, o, o, o, o, o]
         }, {
           soundNumber: 5,
-          attacks: [true, false, false, false, true, true, true, false, false, false, false, false, true, false, false, false]
+          attacks: [x, o, o, o, x, x, x, o, o, o, o, o, x, o, o, o]
         }, {
           soundNumber: 6,
-          attacks: [false, true, false, true, false, false, false, false, true, true, true, false, false, false, false, false]
+          attacks: [o, x, o, x, o, o, o, o, x, x, x, o, o, o, o, o]
         }, {
           soundNumber: 7,
-          attacks: [false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false]
+          attacks: [o, o, x, o, o, o, o, o, o, o, o, o, o, o, o, o]
         }];
 
         for (var i = 0; i < array.length; i++) {
@@ -344,16 +385,20 @@ function () {
     key: "makeRow",
     value: function makeRow(sound) {
       var notes = [];
+      var rowContainer = document.createElement('div');
+      rowContainer.setAttribute("class", "rowContainer");
       var row = document.createElement('div');
       row.setAttribute("class", "row-".concat(sound));
 
       for (var i = 0; i < 16; i++) {
         var note = this.makeNote(sound, i);
         row.appendChild(note);
+        rowContainer.appendChild(row);
         notes.push(note);
       }
 
-      document.querySelector('.sequencer').appendChild(row);
+      document.querySelector('.sequencer').appendChild(rowContainer);
+      this.addNoteValueInput(sound, row, rowContainer);
       return notes;
     }
   }, {
@@ -364,7 +409,7 @@ function () {
       var noteContainer = document.createElement('div');
       noteContainer.setAttribute('class', "note");
       var note = document.createElement('div');
-      note.setAttribute("class", "\n        note-face-front \n        sound-".concat(sound, " \n        pos-").concat(pos, " \n        pulse-shrink\n        "));
+      note.setAttribute("class", "note-face-front \n      sound-".concat(sound, " \n      pos-").concat(pos, " \n      pulse-shrink"));
       note.setAttribute("data-selected", 'false');
       note.setAttribute("shape", "circle");
       note.addEventListener('click', function () {
@@ -411,6 +456,22 @@ function () {
         soundNumber: soundNumber,
         attacks: attacks
       };
+    }
+  }, {
+    key: "addNoteValueInput",
+    value: function addNoteValueInput(sound, row, rowContainer) {
+      var options = ['C', "C#/D", 'D', "D#/E", 'E', 'F', "F#/G", 'G', "G#/A", 'A', "A#/B", 'B', 'C'];
+      var values = ['C4', 'Db4', 'D4', 'Eb4', 'E4', 'F4', 'Gb4', 'G4', 'Ab4', 'A4', 'Bb4', 'B4', 'C5'];
+      var dropdown = document.createElement('select');
+      dropdown.setAttribute("name", sound);
+      dropdown.setAttribute("class", "note-input");
+      values.forEach(function (val, i) {
+        var option = document.createElement('option');
+        option.setAttribute("value", val);
+        option.innerHTML = options[i];
+        dropdown.appendChild(option);
+      });
+      rowContainer.insertBefore(dropdown, row);
     }
   }]);
 
