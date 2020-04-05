@@ -312,29 +312,29 @@ function () {
         var x = true;
         var o = false;
         var array = [{
-          soundNumber: 0,
-          attacks: [x, o, o, o, x, x, x, o, o, o, o, o, x, x, x, o]
-        }, {
-          soundNumber: 1,
-          attacks: [o, x, o, x, o, o, o, o, x, x, x, o, o, o, o, o]
-        }, {
-          soundNumber: 2,
-          attacks: [o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o]
-        }, {
-          soundNumber: 3,
-          attacks: [x, o, x, x, x, x, x, o, o, o, o, o, x, x, x, o]
-        }, {
-          soundNumber: 4,
-          attacks: [o, o, o, o, o, o, o, o, x, x, x, o, o, o, o, o]
-        }, {
-          soundNumber: 5,
-          attacks: [x, o, o, o, x, x, x, o, o, o, o, o, x, o, o, o]
+          soundNumber: 7,
+          attacks: [x, x, o, o, o, o, o, o, o, o, o, o, o, o, x, o]
         }, {
           soundNumber: 6,
-          attacks: [o, x, o, x, o, o, o, o, x, x, x, o, o, o, o, o]
+          attacks: [o, o, x, x, o, o, o, o, o, o, o, o, x, x, o, o]
         }, {
-          soundNumber: 7,
-          attacks: [o, o, x, o, o, o, o, o, o, o, o, o, o, o, o, o]
+          soundNumber: 5,
+          attacks: [o, o, o, o, x, x, o, o, o, o, o, o, o, o, o, o]
+        }, {
+          soundNumber: 4,
+          attacks: [o, o, x, x, o, o, x, o, o, o, x, x, o, o, x, o]
+        }, {
+          soundNumber: 3,
+          attacks: [o, o, o, o, x, x, o, o, x, x, o, o, x, x, o, o]
+        }, {
+          soundNumber: 2,
+          attacks: [o, o, x, x, o, o, x, o, o, o, x, x, o, o, x, o]
+        }, {
+          soundNumber: 1,
+          attacks: [o, o, o, o, o, o, o, o, x, x, o, o, x, x, o, o]
+        }, {
+          soundNumber: 0,
+          attacks: [x, x, o, o, o, o, o, o, o, o, x, x, o, o, x, o]
         }];
 
         for (var i = 0; i < array.length; i++) {
