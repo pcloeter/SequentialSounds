@@ -104,18 +104,20 @@ class Sequencer {
   toggleNoteInputs() {
     const scales = document.querySelectorAll('input[name="scale"]');
 
-    scales.forEach(scale => scale.addEventListener("click", () => {
-      const dropdowns = document.getElementsByClassName("note-input");
-      if (scale.value === "custom") {
-        for (let i = 0; i < dropdowns.length; i++) {
-          dropdowns[i].classList.contains("visible") || dropdowns[i].classList.add("visible");      
+    scales.forEach(scale => {
+      scale.addEventListener("click", () => {
+        const dropdowns = document.getElementsByClassName("note-input");
+        if (scale.value === "custom") {
+          for (let i = 0; i < dropdowns.length; i++) {
+            dropdowns[i].classList.contains("visible") || dropdowns[i].classList.add("visible");      
+          }
+        } else { 
+          for (let i = 0; i < dropdowns.length; i++) {
+            !dropdowns[i].classList.contains("visible") || dropdowns[i].classList.remove("visible");
+          }
         }
-      } else { 
-        for (let i = 0; i < dropdowns.length; i++) {
-          !dropdowns[i].classList.contains("visible") || dropdowns[i].classList.remove("visible");
-        }
-      }
-    }))
+      })
+    })
   }
 
   setDemo () {
@@ -133,13 +135,14 @@ class Sequencer {
         {soundNumber: 1, attacks: [o, o, o, o, o, o, o, o, x, x, o, o, x, x, o, o] },
         {soundNumber: 0, attacks: [x, x, o, o, o, o, o, o, o, o, x, x, o, o, x, o] }
       ];
+
       for (let i = 0; i < array.length; i++) {
         const notes = document.querySelectorAll(`.sound-sound${i}`);
-          for (let j = 0; j < 16; j++) {
-            if (array[i].attacks[j] === true) {
-              notes[j].setAttribute("data-selected", 'true')
-            }
+        for (let j = 0; j < 16; j++) {
+          if (array[i].attacks[j] === true) {
+            notes[j].setAttribute("data-selected", 'true')
           }
+        }
       }
     })
   }

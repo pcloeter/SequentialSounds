@@ -286,7 +286,7 @@ function () {
     value: function toggleNoteInputs() {
       var scales = document.querySelectorAll('input[name="scale"]');
       scales.forEach(function (scale) {
-        return scale.addEventListener("click", function () {
+        scale.addEventListener("click", function () {
           var dropdowns = document.getElementsByClassName("note-input");
 
           if (scale.value === "custom") {
@@ -422,12 +422,7 @@ function () {
     key: "toggleSelect",
     value: function toggleSelect(note) {
       var selected = note.getAttribute('data-selected');
-
-      if (selected === "true") {
-        note.setAttribute("data-selected", 'false');
-      } else {
-        note.setAttribute("data-selected", 'true');
-      }
+      note.setAttribute("data-selected", "".concat(selected === 'true' ? 'false' : 'true'));
     }
   }, {
     key: "soundRowsPlayback",
@@ -446,11 +441,7 @@ function () {
       var attacks = [];
       var notes = document.querySelectorAll(".sound-sound".concat(soundNumber));
       notes.forEach(function (note) {
-        if (note.getAttribute("data-selected") === "true") {
-          attacks.push(true);
-        } else {
-          attacks.push(false);
-        }
+        note.getAttribute("data-selected") === "true" ? attacks.push(true) : attacks.push(false);
       });
       return {
         soundNumber: soundNumber,

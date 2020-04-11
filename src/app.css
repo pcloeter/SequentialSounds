@@ -6,13 +6,15 @@ body {
   display: flex;
 }
 
-button {
-  height: 25px;
+button, select {
+  padding: 5px 10px;
   margin: 0px 15px 0px 15px;
   box-shadow: 1px 1px 8px #a19655;
   font-weight: 600;
-  min-width: 8vw;
   font-size: 1.4vw;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-appearance: none;
 }
 
 #main {
@@ -270,6 +272,10 @@ button {
   margin: 10px;
 }
 
+label {
+  font-size: 1.4vw;
+}
+
 .shapes.first {
   margin-left: 50px;
 }
@@ -280,8 +286,8 @@ button {
     font-size: 6vw;
   }
 
-  button {
-    height: 20px;
+  button, select {
+    padding: 3px 8px;
   }
 
   .scales-container div {

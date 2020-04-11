@@ -58,12 +58,7 @@ class Structure{
 
   toggleSelect (note) {
     let selected = note.getAttribute('data-selected');
-    
-    if (selected === "true") {
-      note.setAttribute("data-selected", 'false');
-    } else {
-      note.setAttribute("data-selected", 'true');
-    }
+    note.setAttribute("data-selected", `${selected === 'true' ? 'false' : 'true'}`)
   };
 
 
@@ -79,12 +74,8 @@ class Structure{
     let attacks = [];
     let notes = document.querySelectorAll(`.sound-sound${soundNumber}`);
     notes.forEach(note => {
-      if (note.getAttribute("data-selected") === "true") {
-        attacks.push(true);
-      } else {
-        attacks.push(false);
-      }
-    });
+      note.getAttribute("data-selected") === "true" ? attacks.push(true) : attacks.push(false);
+    })
     return {soundNumber, attacks};
   }
 
