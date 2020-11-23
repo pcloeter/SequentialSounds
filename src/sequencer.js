@@ -13,7 +13,9 @@ class Sequencer {
     this.whichScale = this.whichScale.bind(this);
     this.whichShape = this.whichShape.bind(this);
     this.toggleNoteInputs = this.toggleNoteInputs.bind(this);
+    // this.toggleTimeInputs = this.toggleTimeInputs.bind(this);
     this.demoButton = document.getElementById("demo");
+    // this.noteLength = null;
     
     
     this.interval = () => {
@@ -25,6 +27,8 @@ class Sequencer {
     };
     
     this.sequence = new Tone.Sequence((time, pos) => {
+      // let noteLength = document.querySelectorAll(`.time-input`).value;
+
       for (let i = 0; i < this.oldSoundRows.length; i++) {
         let row = this.newSoundRows(this.oldSoundRows, this.rowPlayback)[i];
         let attack = row.attacks[pos];
@@ -45,7 +49,7 @@ class Sequencer {
     Tone.Transport.start();
   };
   
-  resetSequencer () {
+  resetSequencer() {
     this.resetButton.addEventListener("click", () => {
       document.querySelectorAll('[data-selected="true"]').forEach( note => {
         note.setAttribute("data-selected", 'false');
@@ -88,7 +92,7 @@ class Sequencer {
     return scale;
   }
 
-  whichShape () {
+  whichShape() {
     const shapes = document.querySelectorAll('input[name="shape"]');
     shapes.forEach(shape => {
       shape.addEventListener("click", () => {
@@ -101,17 +105,27 @@ class Sequencer {
     })
   }
 
+  // toggleTimeInputs() {
+  //   const timeBox = document.getElementById("time-checkbox");
+  //   const container = document.getElementById("time-container");
+  //   timeBox.addEventListener("click", () => {
+  //     timeBox.checked == true ? container.classList.add("visible") : container.classList.remove("visible");
+  //   })
+  // }
+
   toggleNoteInputs() {
     const scales = document.querySelectorAll('input[name="scale"]');
-
+    const timeContainer = document.getElementById('time-container');
     scales.forEach(scale => {
       scale.addEventListener("click", () => {
         const dropdowns = document.getElementsByClassName("note-input");
         if (scale.value === "custom") {
+          timeContainer.classList.contains("custom-padding") || timeContainer.classList.add("custom-padding");
           for (let i = 0; i < dropdowns.length; i++) {
             dropdowns[i].classList.contains("visible") || dropdowns[i].classList.add("visible");      
           }
         } else { 
+          !timeContainer.classList.contains("custom-padding") || timeContainer.classList.remove("custom-padding");
           for (let i = 0; i < dropdowns.length; i++) {
             !dropdowns[i].classList.contains("visible") || dropdowns[i].classList.remove("visible");
           }

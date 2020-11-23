@@ -6,15 +6,39 @@ body {
   display: flex;
 }
 
-button, select {
+.time-container {
+  display: none;
+}
+
+.custom-padding {
+  padding-left: 7vw;
+}
+
+button, .note-input {
+  background-color: lightgray;
   padding: 5px 10px;
-  margin: 0px 15px 0px 15px;
   box-shadow: 1px 1px 8px #a19655;
   font-weight: 600;
-  font-size: 1.4vw;
   -webkit-border-radius: 0px;
   border-radius: 0px;
   -webkit-appearance: none;
+}
+
+button {
+  font-size: 1.4vw;
+  margin: 0px 15px 0px 15px;
+}
+
+.note-input {
+  width: 7vw;
+  font-size: 1.4vw;
+  text-align-last: center;
+}
+
+[class *='time-input'] {
+  border: .4vw solid yellow;
+  width: 3.2vw;
+  margin: .4vw;
 }
 
 #main {
@@ -50,13 +74,12 @@ button, select {
   color: white;
 }
 
-.rowContainer {
+.row-container {
   display: flex;
   align-items: center;
 }
 
 .note-input {
-  margin-right: 5px;
   display: none;
 }
 
@@ -79,13 +102,6 @@ button, select {
 [shape="square"] {
   border-radius: 0;
 }
-
-[shape="oval"] {
-  border-radius: 2.4vw;
-  width: 1.4vw;
-  transform: rotate(90deg);
-}
-
 
 @-webkit-keyframes pulse-shrink {
   to {
@@ -187,7 +203,6 @@ button, select {
   font-weight: 300;
   margin: 1vw;
   font-size: 1.5vw;
-
 }
 
 .links img {
@@ -264,7 +279,8 @@ button, select {
 }
 
 .radio-div,
-.shapes {
+.shapes,
+.note-time {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -276,17 +292,28 @@ label {
   font-size: 1.4vw;
 }
 
+ 
+.note-time.first,
 .shapes.first {
-  margin-left: 50px;
+  margin-left: 40px;
+}
+
+@media (max-width: 767px) {
+  .note-input {
+    width: 10.5vw;
+  }
+
+  .custom-padding {
+    padding-left: 10.5vw;
+  }
 }
 
 @media (max-width: 460px) {
-
   .main-title {
     font-size: 6vw;
   }
 
-  button, select {
+  button, .note-input {
     padding: 3px 8px;
   }
 

@@ -9,15 +9,16 @@ class Structure{
       this.makeRow("sound5"),
       this.makeRow("sound6"),
       this.makeRow("sound7"),
-    ]
+    ];
     // this.measuresLength = document.getElementById('measures-length');
+    // this.addNoteTimeInputs = this.addNoteTimeInputs();
   }
 
 
   makeRow(sound) {
     let notes = [];
     let rowContainer = document.createElement('div');
-    rowContainer.setAttribute("class", "rowContainer");
+    rowContainer.setAttribute("class", "row-container");
     let row = document.createElement('div');
     row.setAttribute("class", `row-${sound}`);
 
@@ -27,11 +28,10 @@ class Structure{
       rowContainer.appendChild(row);
       notes.push(note);
     }
-    document.querySelector('.sequencer').appendChild(rowContainer);
+    document.querySelector('#sequencer').appendChild(rowContainer);
     this.addNoteValueInput(sound, row, rowContainer);
     return notes;
   }
-
 
   makeNote (sound, pos) {
     let noteContainer = document.createElement('div');
@@ -94,7 +94,29 @@ class Structure{
     })
     rowContainer.insertBefore(dropdown, row);
   }
+
+  // addNoteTimeInputs() {
+  //   const row = document.querySelector(".row-container");
+  //   const seq = document.getElementById("sequencer");
+  //   const timeInputsContainer = document.createElement("div");
+  //   timeInputsContainer.setAttribute("id", "time-container");
+  //   timeInputsContainer.setAttribute("class", "time-container");
+  //   const options = {"whole": "1n", "half": "2n", "quarter": "4n", "eighth": "8n"};
+
+  //   for(let i = 0; i < 16; i++) {
+  //     const dropdown = document.createElement("select");
+  //     dropdown.setAttribute("class", `time-input${i}`);
+      
+  //     Object.keys(options).forEach(noteTime => {
+  //       const option = document.createElement("option");
+  //       option.setAttribute("value", options[noteTime]);
+  //       option.innerHTML = noteTime;
+  //       dropdown.appendChild(option);
+  //     })
+  //     timeInputsContainer.appendChild(dropdown);
+  //   }
+  //  seq.insertBefore(timeInputsContainer, row);
+  // }
 }
 
 export default Structure;
-

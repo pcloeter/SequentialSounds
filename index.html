@@ -38,41 +38,42 @@
       <button id="reset-button">Reset</button>
       <button id="demo">Set Demo!</button>
     </div>
-      <div class="scales-container">
-        <div class="radio-container">
-          <div class="radio-div">
-            <input type="radio" id="custom"
-              name="scale" value="custom">
-            <label for="custom">Custom</label>
-          </div>
-          <div class="radio-div">
-            <input type="radio" id="major"
-              name="scale" value="major" checked>
-            <label for="major">Major</label>
-          </div>
-          <div class="radio-div">
-            <input type="radio" id="minor"
-              name="scale" value="minor">
-            <label for="minor">Minor</label>
-          </div>
-          <div class="shapes first">
-            <input type="radio" id="squares"
-            name="shape" value="square">
-            <label for="squares">Squares</label>
-          </div>
-          <div class="shapes">
-            <input type="radio" id="circles"
-              name="shape" value="circle" checked>
-            <label for="circles">Circles</label>
-          </div>
-          <div class="shapes">
-            <input type="radio" id="ovals"
-              name="shape" value="oval">
-            <label for="ovals">Ovals</label>
-          </div>
+    <div class="scales-container">
+      <div class="radio-container">
+        <div class="radio-div">
+          <input type="radio" id="custom"
+            name="scale" value="custom">
+          <label for="custom">Custom</label>
+        </div>
+        <div class="radio-div">
+          <input type="radio" id="major"
+            name="scale" value="major" checked>
+          <label for="major">Major</label>
+        </div>
+        <div class="radio-div">
+          <input type="radio" id="minor"
+            name="scale" value="minor">
+          <label for="minor">Minor</label>
+        </div>
+        <div class="note-time first">
+          <input type="checkbox" id="time-checkbox"
+            name="show-note-time">
+          <label for="time-checkbox">Show Note Lengths</label>
+        </div>
+        <div class="shapes first">
+          <input type="radio" id="circles"
+            name="shape" value="circle" checked>
+          <label for="circles">Circles</label>
+        </div>
+        <div class="shapes">
+          <input type="radio" id="squares"
+          name="shape" value="square">
+          <label for="squares">Squares</label>
         </div>
       </div>
-    <div class="sequencer"></div>
+    </div>
+
+    <div id="sequencer"></div>
 
     <div class="links-container">
       <div class="links"><a href="https://github.com/pcloeter">

@@ -141,6 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
   sequencer.setDemo();
   sequencer.whichShape();
   sequencer.toggleNoteInputs();
+  sequencer.toggleTimeInputs();
 });
 
 /***/ }),
@@ -183,7 +184,9 @@ function () {
     this.whichScale = this.whichScale.bind(this);
     this.whichShape = this.whichShape.bind(this);
     this.toggleNoteInputs = this.toggleNoteInputs.bind(this);
+    this.toggleTimeInputs = this.toggleTimeInputs.bind(this);
     this.demoButton = document.getElementById("demo");
+    this.noteLength = null;
 
     this.interval = function () {
       var array = [];
@@ -196,17 +199,20 @@ function () {
     };
 
     this.sequence = new tone__WEBPACK_IMPORTED_MODULE_0___default.a.Sequence(function (time, pos) {
+      var noteLength = document.querySelectorAll(".time-input").value;
+
       for (var i = 0; i < _this.oldSoundRows.length; i++) {
         var row = _this.newSoundRows(_this.oldSoundRows, _this.rowPlayback)[i];
 
         var attack = row.attacks[pos];
+        console.log(pos, i);
 
         if (attack) {
           document.querySelectorAll(".pos-".concat(pos)).forEach(function (note) {
             note.setAttribute("data-playing", "true");
           });
 
-          _this.instrument.triggerAttackRelease(_this.whichScale()[i], "4n");
+          _this.instrument.triggerAttackRelease(_this.whichScale()[i], noteLength);
 
           setTimeout(function () {
             document.querySelectorAll(".pos-".concat(pos)).forEach(function (note) {
@@ -237,15 +243,8 @@ function () {
     value: function controlPlayback() {
       var that = this;
       this.playButton.addEventListener("click", function (e) {
-        if (tone__WEBPACK_IMPORTED_MODULE_0___default.a.context.state !== "running") {
-          tone__WEBPACK_IMPORTED_MODULE_0___default.a.context.resume();
-        }
-
-        if (that.sequence.state === 'stopped') {
-          that.sequence.start('+.01');
-        } else {
-          that.sequence.stop();
-        }
+        tone__WEBPACK_IMPORTED_MODULE_0___default.a.context.state !== "running" && tone__WEBPACK_IMPORTED_MODULE_0___default.a.context.resume();
+        that.sequence.state === 'stopped' ? that.sequence.start('+.01') : that.sequence.stop();
       });
     }
   }, {
@@ -282,18 +281,32 @@ function () {
       });
     }
   }, {
+    key: "toggleTimeInputs",
+    value: function toggleTimeInputs() {
+      var timeBox = document.getElementById("time-checkbox");
+      var container = document.getElementById("time-container");
+      timeBox.addEventListener("click", function () {
+        timeBox.checked == true ? container.classList.add("visible") : container.classList.remove("visible");
+      });
+    }
+  }, {
     key: "toggleNoteInputs",
     value: function toggleNoteInputs() {
       var scales = document.querySelectorAll('input[name="scale"]');
+      var timeContainer = document.getElementById('time-container');
       scales.forEach(function (scale) {
         scale.addEventListener("click", function () {
           var dropdowns = document.getElementsByClassName("note-input");
 
           if (scale.value === "custom") {
+            timeContainer.classList.contains("custom-padding") || timeContainer.classList.add("custom-padding");
+
             for (var i = 0; i < dropdowns.length; i++) {
               dropdowns[i].classList.contains("visible") || dropdowns[i].classList.add("visible");
             }
           } else {
+            !timeContainer.classList.contains("custom-padding") || timeContainer.classList.remove("custom-padding");
+
             for (var _i = 0; _i < dropdowns.length; _i++) {
               !dropdowns[_i].classList.contains("visible") || dropdowns[_i].classList.remove("visible");
             }
@@ -379,6 +392,8 @@ function () {
     _classCallCheck(this, Structure);
 
     this.soundRows = [this.makeRow("sound0"), this.makeRow("sound1"), this.makeRow("sound2"), this.makeRow("sound3"), this.makeRow("sound4"), this.makeRow("sound5"), this.makeRow("sound6"), this.makeRow("sound7")]; // this.measuresLength = document.getElementById('measures-length');
+
+    this.addNoteTimeInputs = this.addNoteTimeInputs();
   }
 
   _createClass(Structure, [{
@@ -386,7 +401,7 @@ function () {
     value: function makeRow(sound) {
       var notes = [];
       var rowContainer = document.createElement('div');
-      rowContainer.setAttribute("class", "rowContainer");
+      rowContainer.setAttribute("class", "row-container");
       var row = document.createElement('div');
       row.setAttribute("class", "row-".concat(sound));
 
@@ -397,7 +412,7 @@ function () {
         notes.push(note);
       }
 
-      document.querySelector('.sequencer').appendChild(rowContainer);
+      document.querySelector('#sequencer').appendChild(rowContainer);
       this.addNoteValueInput(sound, row, rowContainer);
       return notes;
     }
@@ -463,6 +478,39 @@ function () {
         dropdown.appendChild(option);
       });
       rowContainer.insertBefore(dropdown, row);
+    }
+  }, {
+    key: "addNoteTimeInputs",
+    value: function addNoteTimeInputs() {
+      var row = document.querySelector(".row-container");
+      var seq = document.getElementById("sequencer");
+      var timeInputsContainer = document.createElement("div");
+      timeInputsContainer.setAttribute("id", "time-container");
+      timeInputsContainer.setAttribute("class", "time-container");
+      var options = {
+        "whole": "1n",
+        "half": "2n",
+        "quarter": "4n",
+        "eighth": "8n"
+      };
+
+      var _loop = function _loop(i) {
+        var dropdown = document.createElement("select");
+        dropdown.setAttribute("class", "time-input".concat(i));
+        Object.keys(options).forEach(function (noteTime) {
+          var option = document.createElement("option");
+          option.setAttribute("value", options[noteTime]);
+          option.innerHTML = noteTime;
+          dropdown.appendChild(option);
+        });
+        timeInputsContainer.appendChild(dropdown);
+      };
+
+      for (var i = 0; i < 16; i++) {
+        _loop(i);
+      }
+
+      seq.insertBefore(timeInputsContainer, row);
     }
   }]);
 
