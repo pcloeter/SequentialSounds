@@ -115,17 +115,17 @@ class Sequencer {
 
   toggleNoteInputs() {
     const scales = document.querySelectorAll('input[name="scale"]');
-    const timeContainer = document.getElementById('time-container');
+    // const timeContainer = document.getElementById('time-container');
     scales.forEach(scale => {
       scale.addEventListener("click", () => {
         const dropdowns = document.getElementsByClassName("note-input");
         if (scale.value === "custom") {
-          timeContainer.classList.contains("custom-padding") || timeContainer.classList.add("custom-padding");
+        //   timeContainer.classList.contains("custom-padding") || timeContainer.classList.add("custom-padding");
           for (let i = 0; i < dropdowns.length; i++) {
             dropdowns[i].classList.contains("visible") || dropdowns[i].classList.add("visible");      
           }
         } else { 
-          !timeContainer.classList.contains("custom-padding") || timeContainer.classList.remove("custom-padding");
+          // !timeContainer.classList.contains("custom-padding") || timeContainer.classList.remove("custom-padding");
           for (let i = 0; i < dropdowns.length; i++) {
             !dropdowns[i].classList.contains("visible") || dropdowns[i].classList.remove("visible");
           }
