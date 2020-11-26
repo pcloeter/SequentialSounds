@@ -20,11 +20,11 @@ button, .note-input {
   box-shadow: 1px 1px 8px #a19655;
   font-weight: 600;
   border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -webkit-appearance: none;
 }
 
 button {
-  -webkit-border-radius: 0px;
-  -webkit-appearance: none;
   font-size: 1.4vw;
   margin: 0px 15px 0px 15px;
 }
