@@ -6,9 +6,9 @@ body {
   display: flex;
 }
 
-.time-container {
+/* .time-container {
   display: none;
-}
+} */
 
 .custom-padding {
   padding-left: 7vw;
@@ -279,8 +279,7 @@ button {
 }
 
 .radio-div,
-.shapes,
-.note-time {
+.shapes {
   display: flex;
   flex-direction: column;
   justify-content: center;
